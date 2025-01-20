@@ -1,2 +1,2 @@
-rootProject.name = "Dataset"
+rootProject.name = "dataset"
 

@@ -1,0 +1,17 @@
+# IDE
+
+.idea/
+.vscode/
+*.iml
+
+# Gradle
+
+.gradle/
+build/
+out/
+
+# Gradle Wrapper
+
+gradle/
+gradlew
+gradlew.bat

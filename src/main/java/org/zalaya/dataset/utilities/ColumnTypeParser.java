@@ -15,6 +15,10 @@ public class ColumnTypeParser {
     }
 
     public static Object parse(String value, ColumnType type) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException("Value cannot be null or blank");
+        }
+
         return switch(type) {
             case NUMBER -> parseNumber(value);
             case STRING -> value;

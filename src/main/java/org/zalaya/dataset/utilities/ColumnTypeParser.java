@@ -6,18 +6,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class ColumnTypeParser {
 
     private static final List<String> DATE_FORMATS = List.of(
         "yyyy-MM-dd",
-        "yyyy-MM-dd'T'HH:mm:ss",
         "dd/MM/yyyy",
         "MM/dd/yyyy",
-        "yyyy/MM/dd",
-        "yyyyMMdd",
-        "dd-MMM-yyyy",
-        "MMM dd, yyyy"
+        "yyyy/MM/dd"
     );
 
     private ColumnTypeParser() {
@@ -51,10 +48,11 @@ public class ColumnTypeParser {
     private static Date parseDate(String value) {
         for (String format: DATE_FORMATS) {
             try {
-                SimpleDateFormat sdf = new SimpleDateFormat(format);
-                sdf.setLenient(false);
+                SimpleDateFormat formatter = new SimpleDateFormat(format);
+                formatter.setLenient(false);
+                formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-                return sdf.parse(value);
+                return formatter.parse(value);
             } catch (ParseException e) {
                 // Continue to the next format
             }

@@ -9,8 +9,8 @@ public class Column {
     private final ColumnType type;
 
     public Column(String name, ColumnType type) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Column name cannot be null or blank");
+        if (name == null || name.isBlank() || type == null) {
+            throw new IllegalArgumentException("Column name and type must not be null or empty");
         }
 
         this.name = name;

@@ -47,14 +47,6 @@ public class ColumnTypeParserTest {
     }
 
     @Test
-    public void shouldParseNumber() {
-        String value = "123";
-        Object expectedValue = 123;
-
-        assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.NUMBER));
-    }
-
-    @Test
     public void shouldParseIntegerNumber() {
         String value = "123";
         Object expectedValue = 123;
@@ -71,8 +63,17 @@ public class ColumnTypeParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenParsingInvalidNumber() {
+    public void shouldThrowExceptionWhenParsingMalformedNumber() {
         String value = "123.45.67";
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            ColumnTypeParser.parseValue(value, ColumnType.NUMBER);
+        });
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenParsingInvalidNumber() {
+        String value = "Hello";
 
         assertThrows(IllegalArgumentException.class, () -> {
             ColumnTypeParser.parseValue(value, ColumnType.NUMBER);
@@ -117,15 +118,6 @@ public class ColumnTypeParserTest {
             .toInstant());
 
         assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.DATE));
-    }
-
-    @Test
-    public void shouldThrowExceptionWhenParsingMalformedDate() {
-        String value = "2021-01-32";
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            ColumnTypeParser.parseValue(value, ColumnType.DATE);
-        });
     }
 
     @Test

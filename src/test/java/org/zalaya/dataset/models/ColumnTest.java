@@ -1,6 +1,7 @@
 package org.zalaya.dataset.models;
 
 import org.junit.jupiter.api.Test;
+
 import org.zalaya.dataset.enumerators.ColumnType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,6 +1,7 @@
 package org.zalaya.dataset.models;
 
 import org.zalaya.dataset.enumerators.ColumnType;
+import org.zalaya.dataset.utilities.ColumnTypeParser;
 
 public class Column {
 
@@ -14,6 +15,10 @@ public class Column {
 
         this.name = name;
         this.type = type;
+    }
+
+    public Object parse(String value) {
+        return ColumnTypeParser.parse(value, type);
     }
 
     public String getName() {

@@ -13,7 +13,7 @@ public class ColumnTypeParserTest {
         String value = "Hello";
         Object expectedValue = "Hello";
 
-        assertEquals(expectedValue, ColumnTypeParser.parse(value, ColumnType.STRING));
+        assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.STRING));
     }
 
     @Test
@@ -21,7 +21,7 @@ public class ColumnTypeParserTest {
         String value = "123";
         Object expectedValue = 123;
 
-        assertEquals(expectedValue, ColumnTypeParser.parse(value, ColumnType.NUMBER));
+        assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.NUMBER));
     }
 
     @Test
@@ -29,7 +29,7 @@ public class ColumnTypeParserTest {
         String value = "123";
         Object expectedValue = 123;
 
-        assertEquals(expectedValue, ColumnTypeParser.parse(value, ColumnType.NUMBER));
+        assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.NUMBER));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class ColumnTypeParserTest {
         String value = "123.45";
         Object expectedValue = 123.45;
 
-        assertEquals(expectedValue, ColumnTypeParser.parse(value, ColumnType.NUMBER));
+        assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.NUMBER));
     }
 
     @Test
@@ -45,7 +45,7 @@ public class ColumnTypeParserTest {
         String value = "123.45.67";
 
         assertThrows(IllegalArgumentException.class, () -> {
-            ColumnTypeParser.parse(value, ColumnType.NUMBER);
+            ColumnTypeParser.parseValue(value, ColumnType.NUMBER);
         });
     }
 

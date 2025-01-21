@@ -17,8 +17,8 @@ public class Column {
         this.type = type;
     }
 
-    public Object parse(String value) {
-        return ColumnTypeParser.parse(value, type);
+    public Object parseValue(String value) {
+        return ColumnTypeParser.parseValue(value, type);
     }
 
     public String getName() {

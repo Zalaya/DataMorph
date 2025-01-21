@@ -9,9 +9,3 @@
 .gradle/
 build/
 out/
-
-# Gradle Wrapper
-
-gradle/
-gradlew
-gradlew.bat

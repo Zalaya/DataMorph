@@ -1,19 +1,11 @@
 package org.zalaya.dataset.models;
 
-public class Cell {
+public record Cell(Object value) {
 
-    private final Object value;
-
-    public Cell(Object value) {
+    public Cell {
         if (value == null) {
             throw new IllegalArgumentException("Value cannot be null");
         }
-
-        this.value = value;
-    }
-
-    public Object getValue() {
-        return value;
     }
 
 }

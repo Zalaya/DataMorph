@@ -2,20 +2,12 @@ package org.zalaya.dataset.models;
 
 import java.util.List;
 
-public class Row {
+public record Row(List<Cell> cells) {
 
-    private final List<Cell> cells;
-
-    public Row(List<Cell> cells) {
+    public Row {
         if (cells == null || cells.isEmpty()) {
             throw new IllegalArgumentException("Row must have at least one cell");
         }
-
-        this.cells = cells;
-    }
-
-    public List<Cell> getCells() {
-        return cells;
     }
 
 }

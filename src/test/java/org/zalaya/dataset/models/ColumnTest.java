@@ -40,7 +40,7 @@ public class ColumnTest {
         String name = "name";
         Column column = new Column(name, ColumnType.STRING);
 
-        assertEquals(name, column.getName());
+        assertEquals(name, column.name());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class ColumnTest {
         ColumnType type = ColumnType.STRING;
         Column column = new Column("name", type);
 
-        assertEquals(type, column.getType());
+        assertEquals(type, column.type());
     }
 
 }

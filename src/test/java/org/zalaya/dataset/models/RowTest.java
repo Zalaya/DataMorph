@@ -32,7 +32,7 @@ public class RowTest {
         List<Cell> cells = List.of(new Cell("value"));
         Row row = new Row(cells);
 
-        assertEquals(cells, row.getCells());
+        assertEquals(cells, row.cells());
     }
 
 }

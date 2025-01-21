@@ -2,7 +2,7 @@ package org.zalaya.dataset.models;
 
 public class Cell {
 
-    private Object value;
+    private final Object value;
 
     public Cell(Object value) {
         if (value == null) {

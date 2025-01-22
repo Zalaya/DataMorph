@@ -34,4 +34,20 @@ public class HeaderTest {
         });
     }
 
+    @Test
+    public void shouldReturnHeaderName() {
+        String name = "name";
+        Header header = new Header(name, HeaderType.STRING);
+
+        assert header.getName().equals(name);
+    }
+
+    @Test
+    public void shouldReturnHeaderType() {
+        HeaderType type = HeaderType.STRING;
+        Header header = new Header("name", type);
+
+        assert header.getType().equals(type);
+    }
+
 }

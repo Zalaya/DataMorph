@@ -2,7 +2,7 @@ package org.zalaya.dataset.utilities;
 
 import org.junit.jupiter.api.Test;
 
-import org.zalaya.dataset.enumerators.ColumnType;
+import org.zalaya.dataset.enumerators.HeaderType;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -11,14 +11,14 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ColumnTypeParserTest {
+public class CellTypeParserTest {
 
     @Test
     public void shouldThrowExceptionWhenParsingNullString() {
         String value = null;
 
         assertThrows(IllegalArgumentException.class, () -> {
-            ColumnTypeParser.parseValue(value, ColumnType.STRING);
+            CellTypeParser.parseValue(value, HeaderType.STRING);
         });
     }
 
@@ -27,7 +27,7 @@ public class ColumnTypeParserTest {
         String value = null;
 
         assertThrows(IllegalArgumentException.class, () -> {
-            ColumnTypeParser.parseValue(value, ColumnType.NUMBER);
+            CellTypeParser.parseValue(value, HeaderType.NUMBER);
         });
     }
 
@@ -36,7 +36,7 @@ public class ColumnTypeParserTest {
         String value = null;
 
         assertThrows(IllegalArgumentException.class, () -> {
-            ColumnTypeParser.parseValue(value, ColumnType.DATE);
+            CellTypeParser.parseValue(value, HeaderType.DATE);
         });
     }
 
@@ -45,7 +45,7 @@ public class ColumnTypeParserTest {
         String value = "Hello";
         Object expectedValue = "Hello";
 
-        assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.STRING));
+        assertEquals(expectedValue, CellTypeParser.parseValue(value, HeaderType.STRING));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ColumnTypeParserTest {
         String value = "123";
         Object expectedValue = 123;
 
-        assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.NUMBER));
+        assertEquals(expectedValue, CellTypeParser.parseValue(value, HeaderType.NUMBER));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class ColumnTypeParserTest {
         String value = "123.45";
         Object expectedValue = 123.45;
 
-        assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.NUMBER));
+        assertEquals(expectedValue, CellTypeParser.parseValue(value, HeaderType.NUMBER));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class ColumnTypeParserTest {
         String value = "123.45.67";
 
         assertThrows(IllegalArgumentException.class, () -> {
-            ColumnTypeParser.parseValue(value, ColumnType.NUMBER);
+            CellTypeParser.parseValue(value, HeaderType.NUMBER);
         });
     }
 
@@ -78,7 +78,7 @@ public class ColumnTypeParserTest {
         String value = "Hello";
 
         assertThrows(IllegalArgumentException.class, () -> {
-            ColumnTypeParser.parseValue(value, ColumnType.NUMBER);
+            CellTypeParser.parseValue(value, HeaderType.NUMBER);
         });
     }
 
@@ -89,7 +89,7 @@ public class ColumnTypeParserTest {
             .atStartOfDay(ZoneId.of("UTC"))
             .toInstant());
 
-        assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.DATE));
+        assertEquals(expectedValue, CellTypeParser.parseValue(value, HeaderType.DATE));
     }
 
     @Test
@@ -99,7 +99,7 @@ public class ColumnTypeParserTest {
             .atStartOfDay(ZoneId.of("UTC"))
             .toInstant());
 
-        assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.DATE));
+        assertEquals(expectedValue, CellTypeParser.parseValue(value, HeaderType.DATE));
     }
 
     @Test
@@ -109,7 +109,7 @@ public class ColumnTypeParserTest {
             .atStartOfDay(ZoneId.of("UTC"))
             .toInstant());
 
-        assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.DATE));
+        assertEquals(expectedValue, CellTypeParser.parseValue(value, HeaderType.DATE));
     }
 
     @Test
@@ -119,7 +119,7 @@ public class ColumnTypeParserTest {
             .atStartOfDay(ZoneId.of("UTC"))
             .toInstant());
 
-        assertEquals(expectedValue, ColumnTypeParser.parseValue(value, ColumnType.DATE));
+        assertEquals(expectedValue, CellTypeParser.parseValue(value, HeaderType.DATE));
     }
 
     @Test
@@ -127,7 +127,7 @@ public class ColumnTypeParserTest {
         String value = "2021/51/21";
 
         assertThrows(IllegalArgumentException.class, () -> {
-            ColumnTypeParser.parseValue(value, ColumnType.DATE);
+            CellTypeParser.parseValue(value, HeaderType.DATE);
         });
     }
 

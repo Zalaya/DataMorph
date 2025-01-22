@@ -21,7 +21,7 @@ public class CellTest {
         Object value = "value";
         Cell cell = new Cell(value);
 
-        assertEquals(value, cell.value());
+        assertEquals(value, cell.getValue());
     }
 
 }

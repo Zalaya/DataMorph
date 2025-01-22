@@ -1,6 +1,6 @@
 package org.zalaya.dataset.utilities;
 
-import org.zalaya.dataset.enumerators.ColumnType;
+import org.zalaya.dataset.enumerators.HeaderType;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-public class ColumnTypeParser {
+public class CellTypeParser {
 
     private static final List<String> DATE_FORMATS = List.of(
         "yyyy-MM-dd",
@@ -18,11 +18,11 @@ public class ColumnTypeParser {
         "yyyy/MM/dd"
     );
 
-    private ColumnTypeParser() {
+    private CellTypeParser() {
         throw new IllegalStateException("Utility classes cannot be instantiated");
     }
 
-    public static Object parseValue(String value, ColumnType type) {
+    public static Object parseValue(String value, HeaderType type) {
         if (value == null || value.isBlank()) {
             throw new IllegalArgumentException("Value cannot be null or blank");
         }

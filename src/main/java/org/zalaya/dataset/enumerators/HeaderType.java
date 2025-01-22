@@ -1,6 +1,6 @@
 package org.zalaya.dataset.enumerators;
 
-public enum ColumnType {
+public enum HeaderType {
 
     NUMBER,
     STRING,

@@ -3,6 +3,7 @@
 # Conceptos
 
 - Cabecera: Nombre y tipo de una columna de datos.
+- Tipo: Clasificación de los datos, es definido por la cabecera.
 - Índice: Posición de una fila en la tabla.
 
 - Dataset: Conjunto de cabeceras y filas.

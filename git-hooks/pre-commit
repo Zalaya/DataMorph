@@ -1,0 +1,10 @@
+#! /bin/bash
+
+./gradlew test
+
+if [ $? -ne 0 ]; then
+    echo "Tests failed, commit denied!"
+    exit 1
+fi
+
+exit 0

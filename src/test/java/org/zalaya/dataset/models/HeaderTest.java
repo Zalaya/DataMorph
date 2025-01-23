@@ -49,4 +49,29 @@ public class HeaderTest {
         });
     }
 
+    @Test
+    public void shouldInstantiateHeaderWhenNameAndTypeAreValid() {
+        String name = "name";
+        HeaderType type = HeaderType.STRING;
+
+        Header header = new Header(name, type);
+
+        assertEquals(name, header.name());
+        assertEquals(type, header.type());
+    }
+
+    @Test
+    public void shouldBuildHeaderWhenNameAndTypeAreValid() {
+        String name = "name";
+        HeaderType type = HeaderType.STRING;
+
+        Header header = Header.builder()
+            .name(name)
+            .type(type)
+            .build();
+
+        assertEquals(name, header.name());
+        assertEquals(type, header.type());
+    }
+
 }

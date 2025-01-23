@@ -1,7 +1,9 @@
 package org.zalaya.dataset.models;
 
 import org.junit.jupiter.api.Test;
+
 import org.zalaya.dataset.enumerators.HeaderType;
+import org.zalaya.dataset.exceptions.InvalidHeaderException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,7 +14,7 @@ public class HeaderTest {
         String name = null;
         HeaderType type = HeaderType.STRING;
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(InvalidHeaderException.class, () -> {
             new Header(name, type);
         });
     }
@@ -22,7 +24,7 @@ public class HeaderTest {
         String name = " ";
         HeaderType type = HeaderType.STRING;
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(InvalidHeaderException.class, () -> {
             new Header(name, type);
         });
     }
@@ -32,7 +34,7 @@ public class HeaderTest {
         String name = "name";
         HeaderType type = null;
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(InvalidHeaderException.class, () -> {
             new Header(name, type);
         });
     }

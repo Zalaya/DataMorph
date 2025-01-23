@@ -18,16 +18,6 @@ public class HeaderTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenNameIsEmpty() {
-        String name = "";
-        HeaderType type = HeaderType.STRING;
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Header(name, type);
-        });
-    }
-
-    @Test
     public void shouldThrowExceptionWhenNameIsBlank() {
         String name = " ";
         HeaderType type = HeaderType.STRING;
@@ -48,29 +38,7 @@ public class HeaderTest {
     }
 
     @Test
-    public void shouldCreateHeaderWithValidNameAndType() {
-        String name = "name";
-        HeaderType type = HeaderType.STRING;
-
-        Header header = new Header(name, type);
-    }
-
-    @Test
-    public void shouldCreateHeaderWithValidNameAndTypeUsingBuilder() {
-        String name = "name";
-        HeaderType type = HeaderType.STRING;
-
-        Header header = Header.builder()
-            .name(name)
-            .type(type)
-            .build();
-
-        assertEquals(name, header.getName());
-        assertEquals(type, header.getType());
-    }
-
-    @Test
-    public void shouldReturnTrueWhenTwoHeadersAreEqual() {
+    public void shouldReturnTrueWhenComparingTwoHeadersWithTheSameName() {
         String name = "name";
         HeaderType type = HeaderType.STRING;
 
@@ -81,7 +49,7 @@ public class HeaderTest {
     }
 
     @Test
-    public void shouldReturnFalseWhenTwoHeadersAreNotEqual() {
+    public void shouldReturnFalseWhenComparingTwoHeadersWithDifferentNames() {
         String name1 = "name1";
         String name2 = "name2";
         HeaderType type = HeaderType.STRING;

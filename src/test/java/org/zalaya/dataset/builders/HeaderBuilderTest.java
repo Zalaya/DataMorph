@@ -51,7 +51,7 @@ public class HeaderBuilderTest {
 
     @Test
     public void shouldThrowExceptionWhenTypeIsNull() {
-        String name = "name";
+        String name = "header";
         HeaderType type = null;
 
         assertThrows(InvalidHeaderException.class, () -> {

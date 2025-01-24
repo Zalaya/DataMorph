@@ -41,7 +41,7 @@ public class HeaderTest {
 
     @Test
     public void shouldThrowExceptionWhenTypeIsNull() {
-        String name = "name";
+        String name = "header";
         HeaderType type = null;
 
         assertThrows(InvalidHeaderException.class, () -> {
@@ -51,7 +51,7 @@ public class HeaderTest {
 
     @Test
     public void shouldReturnTrueWhenComparingHeadersWithSameName() {
-        String name = "name";
+        String name = "header";
         HeaderType type = HeaderType.STRING;
 
         Header header1 = new Header(name, type);
@@ -62,7 +62,7 @@ public class HeaderTest {
 
     @Test
     public void shouldReturnTrueWhenComparingHeadersWithSameNameAndDifferentType() {
-        String name = "name";
+        String name = "header";
         HeaderType type1 = HeaderType.STRING;
         HeaderType type2 = HeaderType.NUMBER;
 
@@ -74,8 +74,8 @@ public class HeaderTest {
 
     @Test
     public void shouldReturnFalseWhenComparingHeadersWithDifferentName() {
-        String name1 = "name1";
-        String name2 = "name2";
+        String name1 = "header1";
+        String name2 = "header2";
         HeaderType type = HeaderType.STRING;
 
         Header header1 = new Header(name1, type);

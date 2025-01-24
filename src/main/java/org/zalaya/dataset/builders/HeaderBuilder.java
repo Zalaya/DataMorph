@@ -1,7 +1,6 @@
 package org.zalaya.dataset.builders;
 
 import org.zalaya.dataset.enumerators.HeaderType;
-import org.zalaya.dataset.exceptions.InvalidHeaderException;
 import org.zalaya.dataset.models.Header;
 
 public class HeaderBuilder {
@@ -19,12 +18,8 @@ public class HeaderBuilder {
         return this;
     }
 
-    public void build() {
-        if (name == null || name.isBlank() || type == null) {
-            throw new InvalidHeaderException("Header name and type must not be null or empty");
-        }
-
-        new Header(name, type);
+    public Header build() {
+        return new Header(name, type);
     }
 
 }

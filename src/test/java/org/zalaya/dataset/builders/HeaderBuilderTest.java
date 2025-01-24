@@ -1,9 +1,10 @@
-package org.zalaya.dataset.models;
+package org.zalaya.dataset.builders;
 
 import org.junit.jupiter.api.Test;
 
 import org.zalaya.dataset.enumerators.HeaderType;
 import org.zalaya.dataset.exceptions.InvalidHeaderException;
+import org.zalaya.dataset.models.Header;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

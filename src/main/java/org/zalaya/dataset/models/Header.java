@@ -1,5 +1,6 @@
 package org.zalaya.dataset.models;
 
+import org.zalaya.dataset.builders.HeaderBuilder;
 import org.zalaya.dataset.enumerators.HeaderType;
 import org.zalaya.dataset.exceptions.InvalidHeaderException;
 

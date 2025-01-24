@@ -1,27 +1,34 @@
 package org.zalaya.dataset.models;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-
 import org.zalaya.dataset.enumerators.HeaderType;
 import org.zalaya.dataset.exceptions.InvalidHeaderException;
 
-@Getter
-@Builder
-@EqualsAndHashCode(exclude = {"type"})
-public class Header {
+import java.util.Objects;
 
-    private final String name;
-    private final HeaderType type;
+public record Header(String name, HeaderType type) {
 
-    public Header(String name, HeaderType type) {
+    public Header {
         if (name == null || name.isBlank() || type == null) {
             throw new InvalidHeaderException("Header name and type must not be null or empty");
         }
+    }
 
-        this.name = name;
-        this.type = type;
+    public static HeaderBuilder builder() {
+        return new HeaderBuilder();
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Header header)) {
+            return false;
+        }
+
+        return Objects.equals(name, header.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 
 }

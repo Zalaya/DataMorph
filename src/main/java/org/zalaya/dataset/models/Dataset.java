@@ -1,6 +1,7 @@
 package org.zalaya.dataset.models;
 
 import org.zalaya.dataset.annotations.AggregateRoot;
+import org.zalaya.dataset.builders.DatasetBuilder;
 import org.zalaya.dataset.exceptions.InvalidDatasetException;
 
 import java.util.List;
@@ -13,6 +14,10 @@ public record Dataset(Set<Header> headers, List<Row> rows) {
         if (headers == null || rows == null) {
             throw new InvalidDatasetException("Dataset headers and rows must not be null");
         }
+    }
+
+    public static DatasetBuilder builder() {
+        return new DatasetBuilder();
     }
 
     public static Dataset withEmptyHeaders(List<Row> rows) {

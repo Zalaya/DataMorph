@@ -15,10 +15,6 @@ public record Cell(Object value) {
         }
     }
 
-    public boolean isValid(Header header) {
-        return header.type().getType().isInstance(value);
-    }
-
     public static CellBuilder builder() {
         return new CellBuilder();
     }

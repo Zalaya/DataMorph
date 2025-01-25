@@ -25,8 +25,8 @@ public record Row(LinkedHashMap<Header, Cell> cells) {
     }
 
     private void validateCells(Map<Header, Cell> cells) {
-        cells.forEach((header, value) -> {
-            if (value != null && !value.isValid(header)) {
+        cells.forEach((header, cell) -> {
+            if (cell != null && !header.type().getType().isInstance(cell.value())) {
                 throw new TypeMismatchException("Cell value does not match the expected type");
             }
         });

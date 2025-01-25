@@ -43,7 +43,7 @@ class DatasetTest {
     }
 
     @Test
-    void shouldReturnTrueWhenComparingDatasetsWithSameValues() {
+    void shouldReturnTrueWhenComparingDatasetsWithSameName() {
         String name = "name";
         Dataset dataset1 = new Dataset(name, headers, rows);
         Dataset dataset2 = new Dataset(name, headers, rows);
@@ -52,7 +52,7 @@ class DatasetTest {
     }
 
     @Test
-    void shouldReturnFalseWhenComparingDatasetsWithDifferentValues() {
+    void shouldReturnFalseWhenComparingDatasetsWithDifferentName() {
         String name1 = "name1";
         String name2 = "name2";
         Dataset dataset1 = new Dataset(name1, headers, rows);

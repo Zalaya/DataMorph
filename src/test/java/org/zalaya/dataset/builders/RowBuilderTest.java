@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RowBuilderTest {
 
+    // TODO: Implement the tests for the Cell class and validations
+
     @Test
     void shouldThrowExceptionWhenCellsAreNull() {
         Map<Header, Object> cells = null;

@@ -10,6 +10,8 @@ public class RowBuilder {
 
     private LinkedHashMap<Header, Object> cells = new LinkedHashMap<>();
 
+    // TODO: Implement the Cell concept and class for the validations
+
     public RowBuilder cell(Header header, Object value) {
         cells.put(header, value);
         return this;

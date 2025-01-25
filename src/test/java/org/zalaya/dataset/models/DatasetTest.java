@@ -16,9 +16,7 @@ public class DatasetTest {
     @Test
     public void shouldThrowExceptionWhenHeadersAreNull() {
         Set<Header> headers = null;
-        Row row = new Row(new LinkedHashMap<>(Map.of(
-            new Header("header1", HeaderType.STRING), "value1"))
-        );
+        Row row = new Row(new LinkedHashMap<>(Map.of(new Header("header1", HeaderType.STRING), "value1")));
 
         assertThrows(InvalidDatasetException.class, () -> {
             new Dataset(headers, List.of(row));

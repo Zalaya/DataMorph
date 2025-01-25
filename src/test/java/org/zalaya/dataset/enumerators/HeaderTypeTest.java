@@ -1,6 +1,7 @@
 package org.zalaya.dataset.enumerators;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 import java.time.LocalDate;
 
@@ -8,40 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HeaderTypeTest {
 
-    @Test
-    void shouldReturnNumberClassWhenInvokingNumberType() {
-        // Arrange
-        HeaderType headerType = HeaderType.NUMBER;
+    @ParameterizedTest
+    @EnumSource(HeaderType.class)
+    void shouldReturnCorrectTypeForEachHeaderType(HeaderType type) {
+        Class<?> expectedType = switch (type) {
+            case NUMBER -> Number.class;
+            case STRING -> String.class;
+            case DATE -> LocalDate.class;
+        };
 
-        // Act
-        Class<?> type = headerType.getType();
-
-        // Assert
-        assertEquals(Number.class, type);
-    }
-
-    @Test
-    void shouldReturnStringClassWhenInvokingStringType() {
-        // Arrange
-        HeaderType headerType = HeaderType.STRING;
-
-        // Act
-        Class<?> type = headerType.getType();
-
-        // Assert
-        assertEquals(String.class, type);
-    }
-
-    @Test
-    void shouldReturnLocalDateClassWhenInvokingDateType() {
-        // Arrange
-        HeaderType headerType = HeaderType.DATE;
-
-        // Act
-        Class<?> type = headerType.getType();
-
-        // Assert
-        assertEquals(LocalDate.class, type);
+        assertEquals(expectedType, type.getType());
     }
 
 }

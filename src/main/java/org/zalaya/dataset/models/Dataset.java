@@ -11,7 +11,7 @@ import java.util.Set;
 public record Dataset(String name, Set<Header> headers, List<Row> rows) {
 
     public Dataset {
-        if (name == null || name.isBlank() || headers == null) {
+        if (name == null || name.isBlank() || headers == null || headers.isEmpty()) {
             throw new InvalidDatasetException("Dataset name and headers must not be null or empty");
         }
     }

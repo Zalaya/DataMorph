@@ -11,8 +11,6 @@ public class RowBuilder {
 
     private LinkedHashMap<Header, Cell> cells = new LinkedHashMap<>();
 
-    // TODO: Implement the Cell concept and class for the validations
-
     public RowBuilder cell(Header header, Cell value) {
         cells.put(header, value);
         return this;

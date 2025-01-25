@@ -12,7 +12,7 @@ class CellTest {
     @ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = { " ", "  ", "\t", "\n" })
-    void shouldNotThrowExceptionWhenValueIsNullOrEmpty(String value) {
+    void shouldNotThrowExceptionWhenValueIsNullOrBlank(String value) {
         assertDoesNotThrow(() -> new Cell(value));
     }
 

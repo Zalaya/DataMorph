@@ -11,7 +11,7 @@ class HeaderTypeTest {
 
     @ParameterizedTest
     @EnumSource(HeaderType.class)
-    void shouldReturnCorrectTypeForEachHeaderType(HeaderType type) {
+    void shouldReturnCorrectTypeForHeaderType(HeaderType type) {
         Class<?> expectedType = switch (type) {
             case NUMBER -> Number.class;
             case STRING -> String.class;
@@ -19,6 +19,15 @@ class HeaderTypeTest {
         };
 
         assertEquals(expectedType, type.getType());
+    }
+
+    @ParameterizedTest
+    @EnumSource(HeaderType.class)
+    void shouldSerializeAndDeserializeHeaderType(HeaderType type) {
+        String serialized = type.name();
+        HeaderType deserialized = HeaderType.valueOf(serialized);
+
+        assertEquals(type, deserialized);
     }
 
 }

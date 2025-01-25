@@ -1,5 +1,6 @@
 package org.zalaya.dataset.builders;
 
+import org.zalaya.dataset.models.Cell;
 import org.zalaya.dataset.models.Header;
 import org.zalaya.dataset.models.Row;
 
@@ -8,16 +9,16 @@ import java.util.Map;
 
 public class RowBuilder {
 
-    private LinkedHashMap<Header, Object> cells = new LinkedHashMap<>();
+    private LinkedHashMap<Header, Cell> cells = new LinkedHashMap<>();
 
     // TODO: Implement the Cell concept and class for the validations
 
-    public RowBuilder cell(Header header, Object value) {
+    public RowBuilder cell(Header header, Cell value) {
         cells.put(header, value);
         return this;
     }
 
-    public RowBuilder cells(Map<Header, Object> cells) {
+    public RowBuilder cells(Map<Header, Cell> cells) {
         this.cells = !this.cells.isEmpty() ? new LinkedHashMap<>(cells) : new LinkedHashMap<>();
         return this;
     }

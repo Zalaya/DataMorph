@@ -14,7 +14,7 @@ class RowTest {
 
     @Test
     void shouldThrowExceptionWhenCellsAreNull() {
-        LinkedHashMap<Header, Object> cells = null;
+        LinkedHashMap<Header, Cell> cells = null;
 
         assertThrows(InvalidRowException.class, () -> {
             new Row(cells);
@@ -23,10 +23,11 @@ class RowTest {
 
     @Test
     void shouldThrowExceptionWhenCellValuesDoNotMatchExpectedType() {
-        LinkedHashMap<Header, Object> cells = new LinkedHashMap<>();
+        LinkedHashMap<Header, Cell> cells = new LinkedHashMap<>();
         Header header = new Header("header", HeaderType.STRING);
+        Cell cell = new Cell(1);
 
-        cells.put(header, 1);
+        cells.put(header, cell);
 
         assertThrows(TypeMismatchException.class, () -> {
             new Row(cells);
@@ -35,10 +36,11 @@ class RowTest {
 
     @Test
     void shouldReturnTrueWhenComparingRowsWithSameCells() {
-        LinkedHashMap<Header, Object> cells = new LinkedHashMap<>();
+        LinkedHashMap<Header, Cell> cells = new LinkedHashMap<>();
         Header header = new Header("header", HeaderType.STRING);
+        Cell cell = new Cell("value");
 
-        cells.put(header, "value");
+        cells.put(header, cell);
 
         Row row1 = new Row(cells);
         Row row2 = new Row(cells);

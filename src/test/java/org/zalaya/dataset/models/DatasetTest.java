@@ -18,7 +18,8 @@ class DatasetTest {
     @Test
     void shouldThrowExceptionWhenHeadersAreNull() {
         Set<Header> headers = null;
-        Row row = new Row(new LinkedHashMap<>(Map.of(new Header("header1", HeaderType.STRING), "value1")));
+        Cell cell = new Cell("value1");
+        Row row = new Row(new LinkedHashMap<>(Map.of(new Header("header1", HeaderType.STRING), cell)));
         List<Row> rows = List.of(row);
 
         assertThrows(InvalidDatasetException.class, () -> {
@@ -38,7 +39,8 @@ class DatasetTest {
 
     @Test
     void shouldInstantiateWithEmptyHeaders() {
-        Row row = new Row(new LinkedHashMap<>(Map.of(new Header("header", HeaderType.STRING), "value")));
+        Cell cell = new Cell("value");
+        Row row = new Row(new LinkedHashMap<>(Map.of(new Header("header", HeaderType.STRING), cell)));
         Set<Header> headers = Set.of();
         List<Row> rows = List.of(row);
         Dataset dataset = Dataset.withEmptyHeaders(List.of(row));

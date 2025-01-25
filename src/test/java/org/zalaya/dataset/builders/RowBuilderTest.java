@@ -3,6 +3,7 @@ package org.zalaya.dataset.builders;
 import org.junit.jupiter.api.Test;
 
 import org.zalaya.dataset.exceptions.InvalidRowException;
+import org.zalaya.dataset.models.Cell;
 import org.zalaya.dataset.models.Header;
 import org.zalaya.dataset.models.Row;
 
@@ -16,7 +17,7 @@ class RowBuilderTest {
 
     @Test
     void shouldThrowExceptionWhenCellsAreNull() {
-        Map<Header, Object> cells = null;
+        Map<Header, Cell> cells = null;
         RowBuilder builder = Row.builder();
         builder.cells(cells);
 

@@ -1,10 +1,12 @@
 package org.zalaya.dataset.models;
 
+import org.zalaya.dataset.annotations.AggregateRoot;
 import org.zalaya.dataset.exceptions.InvalidDatasetException;
 
 import java.util.List;
 import java.util.Set;
 
+@AggregateRoot
 public record Dataset(Set<Header> headers, List<Row> rows) {
 
     public Dataset {

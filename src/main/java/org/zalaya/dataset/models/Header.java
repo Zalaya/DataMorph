@@ -1,11 +1,13 @@
 package org.zalaya.dataset.models;
 
+import org.zalaya.dataset.annotations.Entity;
 import org.zalaya.dataset.builders.HeaderBuilder;
 import org.zalaya.dataset.enumerators.HeaderType;
 import org.zalaya.dataset.exceptions.InvalidHeaderException;
 
 import java.util.Objects;
 
+@Entity
 public record Header(String name, HeaderType type) {
 
     public Header {

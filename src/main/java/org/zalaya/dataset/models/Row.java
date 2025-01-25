@@ -1,9 +1,8 @@
 package org.zalaya.dataset.models;
 
 import org.zalaya.dataset.annotations.Entity;
-import org.zalaya.dataset.builders.RowBuilder;
-import org.zalaya.dataset.exceptions.InvalidRowException;
-import org.zalaya.dataset.exceptions.TypeMismatchException;
+import org.zalaya.dataset.exceptions.generic.TypeMismatchException;
+import org.zalaya.dataset.exceptions.specific.InvalidRowException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -18,10 +17,6 @@ public record Row(LinkedHashMap<Header, Cell> cells) {
         }
 
         validateCells(cells);
-    }
-
-    public static RowBuilder builder() {
-        return new RowBuilder();
     }
 
     private void validateCells(Map<Header, Cell> cells) {

@@ -1,23 +1,11 @@
 package org.zalaya.dataset.models;
 
 import org.zalaya.dataset.annotations.Entity;
-import org.zalaya.dataset.builders.CellBuilder;
-import org.zalaya.dataset.exceptions.InvalidCellException;
 
 import java.util.Objects;
 
 @Entity
 public record Cell(Object value) {
-
-    public Cell {
-        if (value == null) {
-            throw new InvalidCellException("Cell value must not be null");
-        }
-    }
-
-    public static CellBuilder builder() {
-        return new CellBuilder();
-    }
 
     @Override
     public boolean equals(Object object) {

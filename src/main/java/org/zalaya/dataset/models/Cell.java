@@ -1,6 +1,7 @@
 package org.zalaya.dataset.models;
 
 import org.zalaya.dataset.annotations.Entity;
+import org.zalaya.dataset.builders.CellBuilder;
 import org.zalaya.dataset.exceptions.InvalidCellException;
 
 import java.util.Objects;
@@ -16,6 +17,10 @@ public record Cell(Object value) {
 
     public boolean isValid(Header header) {
         return header.type().getType().isInstance(value);
+    }
+
+    public static CellBuilder builder() {
+        return new CellBuilder();
     }
 
     @Override

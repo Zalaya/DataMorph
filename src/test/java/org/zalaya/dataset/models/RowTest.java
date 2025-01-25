@@ -10,10 +10,10 @@ import java.util.LinkedHashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RowTest {
+class RowTest {
 
     @Test
-    public void shouldThrowExceptionWhenCellsAreNull() {
+    void shouldThrowExceptionWhenCellsAreNull() {
         LinkedHashMap<Header, Object> cells = null;
 
         assertThrows(InvalidRowException.class, () -> {
@@ -22,7 +22,7 @@ public class RowTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenCellValuesDoNotMatchExpectedType() {
+    void shouldThrowExceptionWhenCellValuesDoNotMatchExpectedType() {
         LinkedHashMap<Header, Object> cells = new LinkedHashMap<>();
         Header header = new Header("header", HeaderType.STRING);
 
@@ -34,7 +34,7 @@ public class RowTest {
     }
 
     @Test
-    public void shouldReturnTrueWhenComparingRowsWithSameCells() {
+    void shouldReturnTrueWhenComparingRowsWithSameCells() {
         LinkedHashMap<Header, Object> cells = new LinkedHashMap<>();
         Header header = new Header("header", HeaderType.STRING);
 

@@ -6,21 +6,19 @@ import org.zalaya.dataset.exceptions.InvalidRowException;
 import org.zalaya.dataset.models.Header;
 import org.zalaya.dataset.models.Row;
 
-import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class RowBuilderTest {
+class RowBuilderTest {
 
     @Test
-    public void shouldThrowExceptionWhenCellsAreNull() {
-        LinkedHashMap<Header, Object> cells = null;
+    void shouldThrowExceptionWhenCellsAreNull() {
+        Map<Header, Object> cells = null;
+        RowBuilder builder = Row.builder();
+        builder.cells(cells);
 
-        assertThrows(InvalidRowException.class, () -> {
-            Row.builder()
-                .cells(cells)
-                .build();
-        });
+        assertThrows(InvalidRowException.class, builder::build);
     }
 
 }

@@ -12,8 +12,8 @@ import java.util.Objects;
 public record Row(LinkedHashMap<Header, Object> cells) {
 
     public Row {
-        if (cells == null) {
-            throw new InvalidRowException("Row cells must not be null");
+        if (cells == null || cells.isEmpty()) {
+            throw new InvalidRowException("Row cells must not be null or empty");
         }
 
         validateCells(cells);

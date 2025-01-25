@@ -4,6 +4,7 @@ import org.zalaya.dataset.models.Header;
 import org.zalaya.dataset.models.Row;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class RowBuilder {
 
@@ -14,8 +15,8 @@ public class RowBuilder {
         return this;
     }
 
-    public RowBuilder cells(LinkedHashMap<Header, Object> cells) {
-        this.cells = cells;
+    public RowBuilder cells(Map<Header, Object> cells) {
+        this.cells = !this.cells.isEmpty() ? new LinkedHashMap<>(cells) : new LinkedHashMap<>();
         return this;
     }
 

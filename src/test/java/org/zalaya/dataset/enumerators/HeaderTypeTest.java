@@ -6,10 +6,10 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HeaderTypeTest {
+class HeaderTypeTest {
 
     @Test
-    public void shouldReturnNumberType() {
+    void shouldReturnNumberType() {
         HeaderType headerType = HeaderType.NUMBER;
         Class<?> actualType = headerType.getType();
 
@@ -17,7 +17,7 @@ public class HeaderTypeTest {
     }
 
     @Test
-    public void shouldReturnStringType() {
+    void shouldReturnStringType() {
         HeaderType headerType = HeaderType.STRING;
         Class<?> actualType = headerType.getType();
 
@@ -25,7 +25,7 @@ public class HeaderTypeTest {
     }
 
     @Test
-    public void shouldReturnDateType() {
+    void shouldReturnDateType() {
         HeaderType headerType = HeaderType.DATE;
         Class<?> actualType = headerType.getType();
 

@@ -1,65 +1,47 @@
 package org.zalaya.dataset.builders;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import org.zalaya.dataset.enumerators.HeaderType;
 import org.zalaya.dataset.exceptions.InvalidHeaderException;
-import org.zalaya.dataset.models.Header;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class HeaderBuilderTest {
+class HeaderBuilderTest {
 
-    @Test
-    public void shouldThrowExceptionWhenNameIsNull() {
-        String name = null;
+    @ParameterizedTest
+    @NullAndEmptySource
+    void shouldThrowExceptionWhenNameIsNullOrEmpty(String name) {
         HeaderType type = HeaderType.STRING;
+        HeaderBuilder builder = new HeaderBuilder();
+        builder.name(name);
+        builder.type(type);
 
-        assertThrows(InvalidHeaderException.class, () -> {
-            Header.builder()
-                .name(name)
-                .type(type)
-                .build();
-        });
+        assertThrows(InvalidHeaderException.class, builder::build);
     }
 
     @Test
-    public void shouldThrowExceptionWhenNameIsEmpty() {
-        String name = "";
-        HeaderType type = HeaderType.STRING;
-
-        assertThrows(InvalidHeaderException.class, () -> {
-            Header.builder()
-                .name(name)
-                .type(type)
-                .build();
-        });
-    }
-
-    @Test
-    public void shouldThrowExceptionWhenNameIsBlank() {
+    void shouldThrowExceptionWhenNameIsBlank() {
         String name = " ";
         HeaderType type = HeaderType.STRING;
+        HeaderBuilder builder = new HeaderBuilder();
+        builder.name(name);
+        builder.type(type);
 
-        assertThrows(InvalidHeaderException.class, () -> {
-            Header.builder()
-                .name(name)
-                .type(type)
-                .build();
-        });
+        assertThrows(InvalidHeaderException.class, builder::build);
     }
 
     @Test
-    public void shouldThrowExceptionWhenTypeIsNull() {
+    void shouldThrowExceptionWhenTypeIsNull() {
         String name = "header";
         HeaderType type = null;
+        HeaderBuilder builder = new HeaderBuilder();
+        builder.name(name);
+        builder.type(type);
 
-        assertThrows(InvalidHeaderException.class, () -> {
-            Header.builder()
-                .name(name)
-                .type(type)
-                .build();
-        });
+        assertThrows(InvalidHeaderException.class, builder::build);
     }
 
 }

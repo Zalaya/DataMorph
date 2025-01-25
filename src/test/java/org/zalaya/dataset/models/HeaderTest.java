@@ -1,17 +1,19 @@
 package org.zalaya.dataset.models;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import org.zalaya.dataset.enumerators.HeaderType;
 import org.zalaya.dataset.exceptions.InvalidHeaderException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class HeaderTest {
+class HeaderTest {
 
-    @Test
-    public void shouldThrowExceptionWhenNameIsNull() {
-        String name = null;
+    @ParameterizedTest
+    @NullAndEmptySource
+    void shouldThrowExceptionWhenNameIsNullOrEmpty(String name) {
         HeaderType type = HeaderType.STRING;
 
         assertThrows(InvalidHeaderException.class, () -> {
@@ -20,17 +22,7 @@ public class HeaderTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenNameIsEmpty() {
-        String name = "";
-        HeaderType type = HeaderType.STRING;
-
-        assertThrows(InvalidHeaderException.class, () -> {
-            new Header(name, type);
-        });
-    }
-
-    @Test
-    public void shouldThrowExceptionWhenNameIsBlank() {
+    void shouldThrowExceptionWhenNameIsBlank() {
         String name = " ";
         HeaderType type = HeaderType.STRING;
 
@@ -40,7 +32,7 @@ public class HeaderTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenTypeIsNull() {
+    void shouldThrowExceptionWhenTypeIsNull() {
         String name = "header";
         HeaderType type = null;
 
@@ -50,7 +42,7 @@ public class HeaderTest {
     }
 
     @Test
-    public void shouldReturnTrueWhenComparingHeadersWithSameName() {
+    void shouldReturnTrueWhenComparingHeadersWithSameName() {
         String name = "header";
         HeaderType type = HeaderType.STRING;
 
@@ -61,7 +53,7 @@ public class HeaderTest {
     }
 
     @Test
-    public void shouldReturnTrueWhenComparingHeadersWithSameNameAndDifferentType() {
+    void shouldReturnTrueWhenComparingHeadersWithSameNameAndDifferentType() {
         String name = "header";
         HeaderType type1 = HeaderType.STRING;
         HeaderType type2 = HeaderType.NUMBER;
@@ -73,7 +65,7 @@ public class HeaderTest {
     }
 
     @Test
-    public void shouldReturnFalseWhenComparingHeadersWithDifferentName() {
+    void shouldReturnFalseWhenComparingHeadersWithDifferentName() {
         String name1 = "header1";
         String name2 = "header2";
         HeaderType type = HeaderType.STRING;

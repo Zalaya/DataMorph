@@ -7,7 +7,12 @@ import java.util.LinkedHashMap;
 
 public class RowBuilder {
 
-    private LinkedHashMap<Header, Object> cells;
+    private LinkedHashMap<Header, Object> cells = new LinkedHashMap<>();
+
+    public RowBuilder cell(Header header, Object value) {
+        cells.put(header, value);
+        return this;
+    }
 
     public RowBuilder cells(LinkedHashMap<Header, Object> cells) {
         this.cells = cells;

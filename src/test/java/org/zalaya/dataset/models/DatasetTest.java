@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DatasetTest {
@@ -31,6 +32,22 @@ public class DatasetTest {
         assertThrows(InvalidDatasetException.class, () -> {
             new Dataset(headers, rows);
         });
+    }
+
+    @Test
+    public void shouldInstantiateWithEmptyHeaders() {
+        Row row = new Row(new LinkedHashMap<>(Map.of(new Header("header", HeaderType.STRING), "value")));
+        Dataset dataset = Dataset.withEmptyHeaders(List.of(row));
+
+        assertEquals(new Dataset(Set.of(), List.of(row)), dataset);
+    }
+
+    @Test
+    public void shouldInstantiateWithEmptyRows() {
+        Header header = new Header("header", HeaderType.STRING);
+        Dataset dataset = Dataset.withEmptyRows(Set.of(header));
+
+        assertEquals(new Dataset(Set.of(header), List.of()), dataset);
     }
 
 }

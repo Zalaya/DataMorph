@@ -13,7 +13,7 @@ class RowTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    void shouldThrowExceptionWhenCellsAreNullOrEmpty(LinkedHashMap<Header, Cell> cells) {
+    void shouldThrowExceptionWhenCellsAreNullOrEmpty(LinkedHashMap<Header, Object> cells) {
         assertThrows(InvalidRowException.class, () -> {
             new Row(cells);
         });

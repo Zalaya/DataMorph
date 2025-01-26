@@ -5,11 +5,10 @@ import org.zalaya.dataset.exceptions.TypeMismatchException;
 import org.zalaya.dataset.exceptions.InvalidRowException;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Objects;
 
 @Entity
-public record Row(LinkedHashMap<Header, Cell> cells) {
+public record Row(LinkedHashMap<Header, Object> cells) {
 
     public Row {
         if (cells == null || cells.isEmpty()) {
@@ -19,9 +18,9 @@ public record Row(LinkedHashMap<Header, Cell> cells) {
         validateCells(cells);
     }
 
-    private void validateCells(Map<Header, Cell> cells) {
+    private void validateCells(LinkedHashMap<Header, Object> cells) {
         cells.forEach((header, cell) -> {
-            if (cell != null && !header.type().getType().isInstance(cell.value())) {
+            if (cell != null && !header.type().getType().isInstance(cell)) {
                 throw new TypeMismatchException("Cell value does not match the expected type");
             }
         });

@@ -1,0 +1,12 @@
+#! /bin/bash
+
+echo "Running unit tests with Gradle..."
+./gradlew test
+
+if [ $? -ne 0 ]; then
+  echo "Unit tests failed. Push aborted."
+  exit 1
+fi
+
+echo "All unit tests passed. Proceeding with the push..."
+exit 0

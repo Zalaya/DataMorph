@@ -14,6 +14,16 @@ public record Dataset(String name, Set<Header> headers, List<Row> rows) {
         if (name == null || name.isBlank() || headers == null || headers.isEmpty()) {
             throw new InvalidDatasetException("Dataset name and headers must not be null or empty");
         }
+
+        validateRows(rows);
+    }
+
+    private void validateRows(List<Row> rows) {
+        rows.forEach(row -> {
+            if (!row.cells().keySet().equals(headers)) {
+                throw new InvalidDatasetException("Dataset row headers must match the dataset headers");
+            }
+        });
     }
 
     @Override

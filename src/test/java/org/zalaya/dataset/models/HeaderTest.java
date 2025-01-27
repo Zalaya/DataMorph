@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import org.zalaya.dataset.enumerators.HeaderType;
+import org.zalaya.dataset.enumerators.CsvHeaderType;
 import org.zalaya.dataset.exceptions.InvalidHeaderException;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -16,7 +16,7 @@ class HeaderTest {
     @NullAndEmptySource
     @ValueSource(strings = {" "})
     void shouldThrowExceptionWhenNameIsNullOrBlank(String name) {
-        HeaderType type = HeaderType.STRING;
+        CsvHeaderType type = CsvHeaderType.STRING;
 
         assertThrows(InvalidHeaderException.class, () -> {
             new Header(name, type);
@@ -25,7 +25,7 @@ class HeaderTest {
 
     @ParameterizedTest
     @NullSource
-    void shouldThrowExceptionWhenTypeIsNull(HeaderType type) {
+    void shouldThrowExceptionWhenTypeIsNull(CsvHeaderType type) {
         String name = "header";
 
         assertThrows(InvalidHeaderException.class, () -> {

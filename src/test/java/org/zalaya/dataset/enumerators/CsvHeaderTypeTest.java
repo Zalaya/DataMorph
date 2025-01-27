@@ -7,11 +7,11 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class HeaderTypeTest {
+class CsvHeaderTypeTest {
 
     @ParameterizedTest
-    @EnumSource(HeaderType.class)
-    void shouldReturnCorrectTypeForHeaderType(HeaderType type) {
+    @EnumSource(CsvHeaderType.class)
+    void shouldReturnCorrectTypeForHeaderType(CsvHeaderType type) {
         Class<?> expectedType = switch (type) {
             case NUMBER -> Number.class;
             case STRING -> String.class;
@@ -22,10 +22,10 @@ class HeaderTypeTest {
     }
 
     @ParameterizedTest
-    @EnumSource(HeaderType.class)
-    void shouldSerializeAndDeserializeHeaderType(HeaderType type) {
+    @EnumSource(CsvHeaderType.class)
+    void shouldSerializeAndDeserializeHeaderType(CsvHeaderType type) {
         String serialized = type.name();
-        HeaderType deserialized = HeaderType.valueOf(serialized);
+        CsvHeaderType deserialized = CsvHeaderType.valueOf(serialized);
 
         assertEquals(type, deserialized);
     }

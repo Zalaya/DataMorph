@@ -1,4 +1,4 @@
-package org.zalaya.dataset.exceptions;
+package org.zalaya.datamorph.dataset.exceptions;
 
 public class InvalidHeaderException extends RuntimeException {
 

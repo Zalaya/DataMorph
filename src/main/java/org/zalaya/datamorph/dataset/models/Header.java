@@ -1,8 +1,8 @@
-package org.zalaya.dataset.models;
+package org.zalaya.datamorph.dataset.models;
 
-import org.zalaya.dataset.annotations.Entity;
-import org.zalaya.dataset.enumerators.HeaderType;
-import org.zalaya.dataset.exceptions.InvalidHeaderException;
+import org.zalaya.datamorph.dataset.annotations.Entity;
+import org.zalaya.datamorph.dataset.enumerators.HeaderType;
+import org.zalaya.datamorph.dataset.exceptions.InvalidHeaderException;
 
 import java.util.Objects;
 

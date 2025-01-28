@@ -1,6 +1,7 @@
-package org.zalaya.dataset.exceptions;
+package org.zalaya.datamorph.dataset.exceptions;
 
 import org.junit.jupiter.api.Test;
+import org.zalaya.datamorph.dataset.exceptions.InvalidDatasetException;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

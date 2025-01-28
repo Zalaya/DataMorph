@@ -1,4 +1,4 @@
-package org.zalaya.dataset.annotations;
+package org.zalaya.datamorph.dataset.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

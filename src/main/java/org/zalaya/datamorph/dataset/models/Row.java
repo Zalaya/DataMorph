@@ -1,8 +1,8 @@
-package org.zalaya.dataset.models;
+package org.zalaya.datamorph.dataset.models;
 
-import org.zalaya.dataset.annotations.Entity;
-import org.zalaya.dataset.exceptions.TypeMismatchException;
-import org.zalaya.dataset.exceptions.InvalidRowException;
+import org.zalaya.datamorph.dataset.annotations.Entity;
+import org.zalaya.datamorph.dataset.exceptions.TypeMismatchException;
+import org.zalaya.datamorph.dataset.exceptions.InvalidRowException;
 
 import java.util.LinkedHashMap;
 import java.util.Objects;

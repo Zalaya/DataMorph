@@ -1,7 +1,7 @@
-package org.zalaya.dataset.models;
+package org.zalaya.datamorph.dataset.models;
 
-import org.zalaya.dataset.annotations.AggregateRoot;
-import org.zalaya.dataset.exceptions.InvalidDatasetException;
+import org.zalaya.datamorph.dataset.annotations.AggregateRoot;
+import org.zalaya.datamorph.dataset.exceptions.InvalidDatasetException;
 
 import java.util.List;
 import java.util.Objects;

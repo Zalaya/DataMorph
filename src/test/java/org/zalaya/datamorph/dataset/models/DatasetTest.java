@@ -4,11 +4,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import org.zalaya.datamorph.dataset.enumerators.HeaderType;
 import org.zalaya.datamorph.dataset.exceptions.InvalidDatasetException;
-import org.zalaya.datamorph.dataset.models.Dataset;
-import org.zalaya.datamorph.dataset.models.Header;
-import org.zalaya.datamorph.dataset.models.Row;
+import org.zalaya.datamorph.dataset.utilities.MockUtilities;
 
 import java.util.List;
 import java.util.Set;
@@ -21,7 +18,7 @@ class DatasetTest {
     @NullAndEmptySource
     @ValueSource(strings = {" "})
     void shouldThrowExceptionWhenNameIsNullOrBlank(String name) {
-        Set<Header> headers = Set.of(new Header("header", HeaderType.STRING));
+        Set<Header> headers = Set.of(new Header("header", MockUtilities.mockHeaderType(String.class)));
         List<Row> rows = List.of();
 
         assertThrows(InvalidDatasetException.class, () -> {

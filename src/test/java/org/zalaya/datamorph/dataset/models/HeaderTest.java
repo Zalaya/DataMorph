@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import org.zalaya.datamorph.dataset.enumerators.HeaderType;
 import org.zalaya.datamorph.dataset.exceptions.InvalidHeaderException;
-import org.zalaya.datamorph.dataset.models.Header;
+import org.zalaya.datamorph.dataset.utilities.MockUtilities;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -17,7 +17,7 @@ class HeaderTest {
     @NullAndEmptySource
     @ValueSource(strings = {" "})
     void shouldThrowExceptionWhenNameIsNullOrBlank(String name) {
-        HeaderType type = HeaderType.STRING;
+        HeaderType type = MockUtilities.mockHeaderType(String.class);
 
         assertThrows(InvalidHeaderException.class, () -> {
             new Header(name, type);

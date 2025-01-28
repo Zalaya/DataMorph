@@ -4,7 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import org.zalaya.dataset.enumerators.CsvHeaderType;
+import org.zalaya.dataset.enumerators.HeaderType;
 import org.zalaya.dataset.exceptions.InvalidDatasetException;
 
 import java.util.List;
@@ -18,7 +18,7 @@ class DatasetTest {
     @NullAndEmptySource
     @ValueSource(strings = {" "})
     void shouldThrowExceptionWhenNameIsNullOrBlank(String name) {
-        Set<Header> headers = Set.of(new Header("header", CsvHeaderType.STRING));
+        Set<Header> headers = Set.of(new Header("header", HeaderType.STRING));
         List<Row> rows = List.of();
 
         assertThrows(InvalidDatasetException.class, () -> {

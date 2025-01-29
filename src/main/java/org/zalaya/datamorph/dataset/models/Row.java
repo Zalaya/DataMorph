@@ -2,7 +2,7 @@ package org.zalaya.datamorph.dataset.models;
 
 import org.zalaya.datamorph.dataset.annotations.Entity;
 import org.zalaya.datamorph.dataset.exceptions.TypeMismatchException;
-import org.zalaya.datamorph.dataset.exceptions.InvalidRowException;
+import org.zalaya.datamorph.dataset.exceptions.RowValidationException;
 
 import java.util.LinkedHashMap;
 import java.util.Objects;
@@ -12,7 +12,7 @@ public record Row(LinkedHashMap<Header, Object> cells) {
 
     public Row {
         if (cells == null || cells.isEmpty()) {
-            throw new InvalidRowException("Row cells must not be null or empty");
+            throw new RowValidationException("Row cells must not be null or empty");
         }
 
         validateCells(cells);

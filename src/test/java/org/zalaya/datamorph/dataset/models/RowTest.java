@@ -3,7 +3,7 @@ package org.zalaya.datamorph.dataset.models;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import org.zalaya.datamorph.dataset.exceptions.InvalidRowException;
+import org.zalaya.datamorph.dataset.exceptions.RowValidationException;
 
 import java.util.LinkedHashMap;
 
@@ -14,7 +14,7 @@ class RowTest {
     @ParameterizedTest
     @NullAndEmptySource
     void shouldThrowExceptionWhenCellsAreNullOrEmpty(LinkedHashMap<Header, Object> cells) {
-        assertThrows(InvalidRowException.class, () -> {
+        assertThrows(RowValidationException.class, () -> {
             new Row(cells);
         });
     }

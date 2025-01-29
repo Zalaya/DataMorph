@@ -4,7 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import org.zalaya.datamorph.dataset.exceptions.InvalidDatasetException;
+import org.zalaya.datamorph.dataset.exceptions.DatasetValidationException;
 import org.zalaya.datamorph.dataset.utilities.MockUtilities;
 
 import java.util.List;
@@ -21,7 +21,7 @@ class DatasetTest {
         Set<Header> headers = Set.of(new Header("header", MockUtilities.mockHeaderType(String.class)));
         List<Row> rows = List.of();
 
-        assertThrows(InvalidDatasetException.class, () -> {
+        assertThrows(DatasetValidationException.class, () -> {
             new Dataset(name, headers, rows);
         });
     }
@@ -32,7 +32,7 @@ class DatasetTest {
         String name = "dataset";
         List<Row> rows = List.of();
 
-        assertThrows(InvalidDatasetException.class, () -> {
+        assertThrows(DatasetValidationException.class, () -> {
             new Dataset(name, headers, rows);
         });
     }

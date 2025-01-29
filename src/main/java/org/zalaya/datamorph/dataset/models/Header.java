@@ -2,7 +2,7 @@ package org.zalaya.datamorph.dataset.models;
 
 import org.zalaya.datamorph.dataset.annotations.Entity;
 import org.zalaya.datamorph.dataset.enumerators.HeaderType;
-import org.zalaya.datamorph.dataset.exceptions.InvalidHeaderException;
+import org.zalaya.datamorph.dataset.exceptions.HeaderValidationException;
 
 import java.util.Objects;
 
@@ -11,7 +11,7 @@ public record Header(String name, HeaderType type) {
 
     public Header {
         if (name == null || name.isBlank() || type == null) {
-            throw new InvalidHeaderException("Header name and type must not be null or empty");
+            throw new HeaderValidationException("Header name and type must not be null or empty");
         }
     }
 

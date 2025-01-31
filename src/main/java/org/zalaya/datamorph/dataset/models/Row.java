@@ -12,10 +12,10 @@ public record Row(List<Header> headers, List<Object> cells) {
             throw new RowValidationException("Row cells must not be null or empty");
         }
 
-        validateCells();
+        validateCells(headers, cells);
     }
 
-    private void validateCells() {
+    private void validateCells(List<Header> headers, List<Object> cells) {
         if (headers.size() != cells.size()) {
             throw new RowValidationException("Row cells must match the row headers");
         }

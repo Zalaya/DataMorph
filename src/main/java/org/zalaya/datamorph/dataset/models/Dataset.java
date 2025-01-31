@@ -25,7 +25,7 @@ public record Dataset(String name, List<Header> headers, List<Row> rows) {
 
     private void validateRows(List<Row> rows) {
         for (Row row : rows) {
-            if (row.headers().equals(headers)) {
+            if (!row.headers().equals(headers)) {
                 throw new DatasetValidationException("Row headers must match the dataset headers");
             }
         }

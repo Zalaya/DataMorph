@@ -1,30 +1,34 @@
 package org.zalaya.datamorph.dataset.models;
 
-import org.zalaya.datamorph.dataset.annotations.AggregateRoot;
 import org.zalaya.datamorph.dataset.exceptions.DatasetValidationException;
-import org.zalaya.datamorph.dataset.exceptions.TypeMismatchException;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
-@AggregateRoot
-public record Dataset(String name, Set<Header> headers, List<Row> rows) {
+public record Dataset(String name, List<Header> headers, List<Row> rows) {
 
     public Dataset {
         if (name == null || name.isBlank() || headers == null || headers.isEmpty()) {
             throw new DatasetValidationException("Dataset name and headers must not be null or empty");
         }
 
+        validateHeaders(headers);
         validateRows(rows);
     }
 
+    private void validateHeaders(List<Header> headers) {
+        if (new HashSet<>(headers).size() != headers.size()) {
+            throw new DatasetValidationException("Dataset headers must be unique");
+        }
+    }
+
     private void validateRows(List<Row> rows) {
-        rows.forEach(row -> {
-            if (!row.cells().keySet().equals(headers)) {
-                throw new TypeMismatchException("Dataset row headers must match the dataset headers");
+        for (Row row : rows) {
+            if (row.headers().equals(headers)) {
+                throw new DatasetValidationException("Row headers must match the dataset headers");
             }
-        });
+        }
     }
 
     @Override

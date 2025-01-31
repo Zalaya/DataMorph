@@ -1,12 +1,10 @@
 package org.zalaya.datamorph.dataset.models;
 
-import org.zalaya.datamorph.dataset.annotations.Entity;
 import org.zalaya.datamorph.dataset.enumerators.HeaderType;
 import org.zalaya.datamorph.dataset.exceptions.HeaderValidationException;
 
 import java.util.Objects;
 
-@Entity
 public record Header(String name, HeaderType type) {
 
     public Header {

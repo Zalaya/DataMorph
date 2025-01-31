@@ -2,6 +2,6 @@ package org.zalaya.datamorph.dataset.enumerators;
 
 public interface HeaderType {
 
-    Class<?> getType();
+    Class<?> type();
 
 }

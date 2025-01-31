@@ -1,43 +1,30 @@
 package org.zalaya.datamorph.dataset.models;
 
-import org.zalaya.datamorph.dataset.annotations.Entity;
 import org.zalaya.datamorph.dataset.exceptions.TypeMismatchException;
 import org.zalaya.datamorph.dataset.exceptions.RowValidationException;
 
-import java.util.LinkedHashMap;
-import java.util.Objects;
+import java.util.List;
 
-@Entity
-public record Row(LinkedHashMap<Header, Object> cells) {
+public record Row(List<Header> headers, List<Object> cells) {
 
     public Row {
-        if (cells == null || cells.isEmpty()) {
+        if (headers == null || headers.isEmpty() || cells == null || cells.isEmpty()) {
             throw new RowValidationException("Row cells must not be null or empty");
         }
 
-        validateCells(cells);
+        validateCells();
     }
 
-    private void validateCells(LinkedHashMap<Header, Object> cells) {
-        cells.forEach((header, cell) -> {
-            if (cell != null && !header.type().getType().isInstance(cell)) {
-                throw new TypeMismatchException("Cell value does not match the expected type");
-            }
-        });
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof Row row)) {
-            return false;
+    private void validateCells() {
+        if (headers.size() != cells.size()) {
+            throw new RowValidationException("Row cells must match the row headers");
         }
 
-        return Objects.equals(cells, row.cells);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(cells);
+        for (int i = 0; i < headers.size(); i++) {
+            if (!headers.get(i).type().type().isInstance(cells.get(i))) {
+                throw new TypeMismatchException("Row cell type must match the row header type");
+            }
+        }
     }
 
 }

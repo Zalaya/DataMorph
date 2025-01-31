@@ -9,6 +9,11 @@ public class Header {
     private final String name;
     private final HeaderType type;
 
+    // TODO: A header can be created without a type.
+    // TODO: A header can't be created without a name.
+
+    // TODO: A header must have a valid name.
+
     public Header(String name, HeaderType type) {
         this.name = name;
         this.type = type;

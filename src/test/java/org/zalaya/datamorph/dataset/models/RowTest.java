@@ -3,7 +3,7 @@ package org.zalaya.datamorph.dataset.models;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import org.zalaya.datamorph.dataset.exceptions.RowValidationException;
+import org.zalaya.datamorph.dataset.exceptions.validation.RowValidationException;
 
 import java.util.LinkedHashMap;
 

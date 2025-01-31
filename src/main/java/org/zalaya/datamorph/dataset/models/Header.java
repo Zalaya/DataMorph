@@ -1,7 +1,7 @@
 package org.zalaya.datamorph.dataset.models;
 
 import org.zalaya.datamorph.dataset.enumerators.HeaderType;
-import org.zalaya.datamorph.dataset.exceptions.HeaderValidationException;
+import org.zalaya.datamorph.dataset.exceptions.validation.HeaderValidationException;
 
 import java.util.Objects;
 

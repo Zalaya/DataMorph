@@ -1,6 +1,6 @@
 package org.zalaya.datamorph.dataset.models;
 
-import org.zalaya.datamorph.dataset.exceptions.DatasetValidationException;
+import org.zalaya.datamorph.dataset.exceptions.validation.DatasetValidationException;
 
 import java.util.HashSet;
 import java.util.List;

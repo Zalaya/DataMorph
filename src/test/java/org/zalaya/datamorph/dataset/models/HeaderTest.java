@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import org.zalaya.datamorph.dataset.enumerators.HeaderType;
-import org.zalaya.datamorph.dataset.exceptions.HeaderValidationException;
+import org.zalaya.datamorph.dataset.exceptions.validation.HeaderValidationException;
 import org.zalaya.datamorph.dataset.utilities.MockUtilities;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;

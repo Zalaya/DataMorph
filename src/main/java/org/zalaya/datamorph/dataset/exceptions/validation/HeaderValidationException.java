@@ -1,4 +1,4 @@
-package org.zalaya.datamorph.dataset.exceptions;
+package org.zalaya.datamorph.dataset.exceptions.validation;
 
 public class HeaderValidationException extends RuntimeException {
 

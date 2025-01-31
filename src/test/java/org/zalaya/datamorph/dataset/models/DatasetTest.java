@@ -4,7 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import org.zalaya.datamorph.dataset.exceptions.DatasetValidationException;
+import org.zalaya.datamorph.dataset.exceptions.validation.DatasetValidationException;
 import org.zalaya.datamorph.dataset.utilities.MockUtilities;
 
 import java.util.List;

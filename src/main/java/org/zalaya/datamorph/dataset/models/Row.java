@@ -1,7 +1,7 @@
 package org.zalaya.datamorph.dataset.models;
 
 import org.zalaya.datamorph.dataset.exceptions.TypeMismatchException;
-import org.zalaya.datamorph.dataset.exceptions.RowValidationException;
+import org.zalaya.datamorph.dataset.exceptions.validation.RowValidationException;
 
 import java.util.List;
 

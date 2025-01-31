@@ -1,16 +1,25 @@
 package org.zalaya.datamorph.dataset.models;
 
 import org.zalaya.datamorph.dataset.enumerators.HeaderType;
-import org.zalaya.datamorph.dataset.exceptions.validation.HeaderValidationException;
 
 import java.util.Objects;
 
-public record Header(String name, HeaderType type) {
+public class Header {
 
-    public Header {
-        if (name == null || name.isBlank() || type == null) {
-            throw new HeaderValidationException("Header name and type must not be null or empty");
-        }
+    private final String name;
+    private final HeaderType type;
+
+    public Header(String name, HeaderType type) {
+        this.name = name;
+        this.type = type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public HeaderType getType() {
+        return type;
     }
 
     @Override

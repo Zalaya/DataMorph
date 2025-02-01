@@ -16,12 +16,36 @@ public class Header {
     private final HeaderType type;
 
     public Header(String name, HeaderType type) {
-        if (name == null || name.trim().isBlank() || type == null) {
-            throw new HeaderValidationException("Header name and type must not be null or empty");
+        this.name = validateName(name);
+        this.type = validateType(type);
+    }
+
+    /**
+     * Validates the header name.
+     *
+     * @param name The header name to validate.
+     * @return The validated header name.
+     */
+    private String validateName(String name) {
+        if (name == null || name.trim().isBlank()) {
+            throw new HeaderValidationException("Header name must not be null or empty");
         }
 
-        this.name = name;
-        this.type = type;
+        return name;
+    }
+
+    /**
+     * Validates the header type.
+     *
+     * @param type The header type to validate.
+     * @return The validated header type.
+     */
+    private HeaderType validateType(HeaderType type) {
+        if (type == null) {
+            throw new HeaderValidationException("Header type must not be null");
+        }
+
+        return type;
     }
 
 }

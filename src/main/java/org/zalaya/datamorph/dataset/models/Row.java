@@ -1,13 +1,11 @@
 package org.zalaya.datamorph.dataset.models;
 
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.util.List;
 
 @Getter
-@Builder
 @EqualsAndHashCode
 public class Row {
 

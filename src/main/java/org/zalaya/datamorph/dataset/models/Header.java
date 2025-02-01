@@ -1,6 +1,5 @@
 package org.zalaya.datamorph.dataset.models;
 
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -8,7 +7,6 @@ import org.zalaya.datamorph.dataset.enumerators.HeaderType;
 import org.zalaya.datamorph.dataset.exceptions.validation.HeaderValidationException;
 
 @Getter
-@Builder
 @EqualsAndHashCode(exclude = {"type"})
 public class Header {
 

@@ -9,7 +9,7 @@ import org.zalaya.datamorph.dataset.exceptions.validation.HeaderValidationExcept
 
 @Getter
 @Builder
-@EqualsAndHashCode(exclude = "type")
+@EqualsAndHashCode(exclude = {"type"})
 public class Header {
 
     private final String name;

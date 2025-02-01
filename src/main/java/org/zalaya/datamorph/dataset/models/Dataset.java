@@ -6,8 +6,7 @@ import lombok.Getter;
 
 import org.zalaya.datamorph.dataset.exceptions.validation.DatasetValidationException;
 
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 @Getter
 @Builder
@@ -15,13 +14,13 @@ import java.util.List;
 public class Dataset {
 
     private final String name;
-    private final List<Header> headers;
+    private final Set<Header> headers;
     private final List<Row> rows;
 
-    public Dataset(String name, List<Header> headers, List<Row> rows) {
+    public Dataset(String name, Set<Header> headers, List<Row> rows) {
         this.name = validateName(name);
-        this.headers = validateHeaders(headers);
-        this.rows = validateRows(rows);
+        this.headers = new LinkedHashSet<>(validateHeaders(headers));
+        this.rows = new ArrayList<>(validateRows(rows));
     }
 
     /**
@@ -44,13 +43,9 @@ public class Dataset {
      * @param headers The dataset headers to validate.
      * @return The validated dataset headers.
      */
-    private List<Header> validateHeaders(List<Header> headers) {
+    private Set<Header> validateHeaders(Set<Header> headers) {
         if (headers == null || headers.isEmpty()) {
-            throw new DatasetValidationException("Dataset headers must not be null");
-        }
-
-        if (new HashSet<>(headers).size() != headers.size()) {
-            throw new DatasetValidationException("Dataset can't have two duplicate headers");
+            throw new DatasetValidationException("Dataset headers must not be null or empty");
         }
 
         return headers;
@@ -82,12 +77,15 @@ public class Dataset {
             throw new DatasetValidationException("Dataset row must have the same number of cells as the number of headers");
         }
 
-        for (int i = 0; i < headers.size(); i++) {
-            if (!headers.get(i).getType().isValidType(row.getCells().get(i))) {
-                throw new DatasetValidationException("Dataset row cell must be of the same type as the header type");
+        Iterator<Header> iterator = headers.iterator();
+
+        for (Object cell : row.getCells()) {
+            Header header = iterator.next();
+
+            if (!header.getType().isValidType(cell)) {
+                throw new DatasetValidationException("Dataset row cell type does not match the header type");
             }
         }
-
     }
 
 }

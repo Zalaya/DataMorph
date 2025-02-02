@@ -15,13 +15,10 @@ public class Dataset {
     private final List<Header> headers;
     private final List<Row> rows;
 
-    // TODO: Validate that the rows of the Dataset have the same number of cells as the number of headers.
-    // TODO: Validate that the cells of the rows of the Dataset are of the same type as the headers.
-
     public Dataset(String name, List<Header> headers, List<Row> rows) {
         this.name = validateName(name);
-        this.headers = new ArrayList<>(validateHeaders(headers));
-        this.rows = new ArrayList<>(rows);
+        this.headers = validateHeaders(headers);
+        this.rows = validateRows(rows);
     }
 
     /**
@@ -50,10 +47,45 @@ public class Dataset {
         }
 
         if (new HashSet<>(headers).size() != headers.size()) {
-            throw new DatasetValidationException("Dataset headers must not contain duplicates");
+            throw new DatasetValidationException("Dataset headers must be unique");
         }
 
-        return new ArrayList<>(headers);
+        return headers;
+    }
+
+    /**
+     * Validates the dataset rows.
+     *
+     * @param rows The dataset rows to validate.
+     * @return The validated dataset rows.
+     */
+    private List<Row> validateRows(List<Row> rows) {
+        if (rows == null || rows.isEmpty()) {
+            throw new DatasetValidationException("Dataset rows must not be null or empty");
+        }
+
+        rows.forEach(this::validateRow);
+
+        return rows;
+    }
+
+    /**
+     * Validates the dataset row.
+     *
+     * @param row The dataset row to validate.
+     */
+    private void validateRow(Row row) {
+        int headersSize = headers.size();
+
+        if (row.getCells().size() != headersSize) {
+            throw new DatasetValidationException("Dataset row cells must have the same size as the headers");
+        }
+
+        for (int i = 0; i < headersSize; i++) {
+            if (!headers.get(i).getType().isValidType(row.getCells().get(i).getClass())) {
+                throw new DatasetValidationException("Dataset row cells must be of the same type as the headers");
+            }
+        }
     }
 
 }

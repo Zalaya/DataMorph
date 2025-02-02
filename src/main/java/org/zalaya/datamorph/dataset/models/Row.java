@@ -2,6 +2,7 @@ package org.zalaya.datamorph.dataset.models;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import org.zalaya.datamorph.dataset.exceptions.validation.RowValidationException;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Row {
      */
     private List<Object> validateCells(List<Object> cells) {
         if (cells == null) {
-            throw new IllegalArgumentException("Row cells must not be null");
+            throw new RowValidationException("Row cells must not be null");
         }
 
         return cells;

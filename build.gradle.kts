@@ -1,11 +1,13 @@
 plugins {
     id("java")
+    id("maven-publish")
 }
 
 group = "xyz.zalaya"
 version = "1.0.0"
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -20,9 +22,20 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:$junitVersion"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
-
 }
 
 tasks.test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
 }

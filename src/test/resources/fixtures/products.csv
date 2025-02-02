@@ -1,0 +1,6 @@
+product_id;product_name;category;price;stock
+101;Laptop;Electronics;1200.99;50
+102;Smartphone;Electronics;799.49;150
+103;Desk;Furniture;199.99;20
+104;Chair;Furniture;89.99;100
+105;Pen;Stationery;1.49;1000

@@ -9,7 +9,7 @@ public class MockUtilities {
 
     public static HeaderType mockHeaderType(Class<?> type) {
         HeaderType mockHeaderType = mock(HeaderType.class);
-        doReturn(type).when(mockHeaderType).type();
+        doReturn(type).when(mockHeaderType).getType();
 
         return mockHeaderType;
     }

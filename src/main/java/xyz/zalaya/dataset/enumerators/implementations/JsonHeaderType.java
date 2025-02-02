@@ -8,7 +8,8 @@ public enum JsonHeaderType implements HeaderType {
     NUMBER(Number.class),
     BOOLEAN(Boolean.class),
     ARRAY(Object[].class),
-    OBJECT(Object.class);
+    OBJECT(Object.class),
+    NULL(null);
 
     private final Class<?> type;
 

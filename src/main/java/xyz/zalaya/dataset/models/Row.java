@@ -2,6 +2,7 @@ package xyz.zalaya.dataset.models;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+
 import xyz.zalaya.dataset.exceptions.validation.RowValidationException;
 
 import java.util.List;

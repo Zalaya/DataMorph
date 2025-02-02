@@ -1,4 +1,4 @@
-package org.zalaya.datamorph.input.csv.exceptions;
+package org.zalaya.datamorph.input.exceptions;
 
 public class CsvReadingException extends RuntimeException {
 

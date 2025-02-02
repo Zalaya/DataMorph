@@ -1,7 +1,6 @@
-package org.zalaya.datamorph.input.csv;
+package org.zalaya.datamorph.input;
 
-import org.zalaya.datamorph.input.Reader;
-import org.zalaya.datamorph.input.csv.exceptions.CsvReadingException;
+import org.zalaya.datamorph.input.exceptions.CsvReadingException;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,14 +10,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CsvReader implements Reader<File> {
+public class CsvReader {
 
-    @Override
-    public List<String> read(File file) {
+    public static List<String> read(File file) {
         List<String> lines = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line = null;
+            String line;
 
             while ((line = reader.readLine()) != null) {
                 lines.add(line);

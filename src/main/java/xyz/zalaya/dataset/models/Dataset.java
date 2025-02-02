@@ -3,10 +3,11 @@ package xyz.zalaya.dataset.models;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import xyz.zalaya.dataset.exceptions.TypeMismatchException;
+import xyz.zalaya.dataset.exceptions.HeaderTypeMismatchException;
 import xyz.zalaya.dataset.exceptions.validation.DatasetValidationException;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
 
 @Getter
 @EqualsAndHashCode(exclude = {"headers", "rows"})
@@ -72,7 +73,7 @@ public class Dataset {
 
             for (int j = 0; j < headers.size(); j++) {
                 if (!headers.get(i).getType().isInstance(rows.get(i).getCells().get(j).getClass())) {
-                    throw new TypeMismatchException("Dataset row cells must be of the same type as the headers");
+                    throw new HeaderTypeMismatchException("Dataset row cells must be of the same type as the headers");
                 }
             }
         }

@@ -1,10 +1,10 @@
-package org.zalaya.datamorph.dataset.models;
+package xyz.zalaya.dataset.models;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import org.zalaya.datamorph.dataset.exceptions.TypeMismatchException;
-import org.zalaya.datamorph.dataset.exceptions.validation.DatasetValidationException;
+import xyz.zalaya.dataset.exceptions.TypeMismatchException;
+import xyz.zalaya.dataset.exceptions.validation.DatasetValidationException;
 
 import java.util.*;
 

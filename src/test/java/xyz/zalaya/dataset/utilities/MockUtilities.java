@@ -1,6 +1,6 @@
-package org.zalaya.datamorph.dataset.utilities;
+package xyz.zalaya.dataset.utilities;
 
-import org.zalaya.datamorph.dataset.enumerators.HeaderType;
+import xyz.zalaya.dataset.enumerators.HeaderType;
 
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;

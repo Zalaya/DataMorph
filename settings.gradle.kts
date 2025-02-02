@@ -1,1 +1,1 @@
-rootProject.name = "datamorph"
+rootProject.name = "dataset"

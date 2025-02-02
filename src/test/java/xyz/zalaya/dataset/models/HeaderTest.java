@@ -1,4 +1,4 @@
-package org.zalaya.datamorph.dataset.models;
+package xyz.zalaya.dataset.models;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,14 +6,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 
-import org.zalaya.datamorph.dataset.enumerators.HeaderType;
-import org.zalaya.datamorph.dataset.exceptions.validation.HeaderValidationException;
+import xyz.zalaya.dataset.enumerators.HeaderType;
+import xyz.zalaya.dataset.exceptions.validation.HeaderValidationException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static org.zalaya.datamorph.dataset.utilities.MockUtilities.mockHeaderType;
+import static xyz.zalaya.dataset.utilities.MockUtilities.mockHeaderType;
 
 class HeaderTest {
 

@@ -1,4 +1,4 @@
-package org.zalaya.datamorph.dataset.enumerators;
+package xyz.zalaya.dataset.enumerators;
 
 public interface HeaderType {
 

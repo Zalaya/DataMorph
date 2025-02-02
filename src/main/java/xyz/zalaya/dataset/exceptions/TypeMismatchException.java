@@ -1,4 +1,4 @@
-package org.zalaya.datamorph.dataset.exceptions;
+package xyz.zalaya.dataset.exceptions;
 
 public class TypeMismatchException extends RuntimeException {
 

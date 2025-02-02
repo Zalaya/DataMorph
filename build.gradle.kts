@@ -2,7 +2,7 @@ plugins {
     id("java")
 }
 
-group = "org.zalaya"
+group = "xyz.zalaya"
 version = "1.0.0"
 
 repositories {

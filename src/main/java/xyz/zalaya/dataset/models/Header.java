@@ -1,10 +1,10 @@
-package org.zalaya.datamorph.dataset.models;
+package xyz.zalaya.dataset.models;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import org.zalaya.datamorph.dataset.enumerators.HeaderType;
-import org.zalaya.datamorph.dataset.exceptions.validation.HeaderValidationException;
+import xyz.zalaya.dataset.enumerators.HeaderType;
+import xyz.zalaya.dataset.exceptions.validation.HeaderValidationException;
 
 @Getter
 @EqualsAndHashCode(exclude = {"type"})

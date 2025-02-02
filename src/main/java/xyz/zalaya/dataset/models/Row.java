@@ -1,8 +1,8 @@
-package org.zalaya.datamorph.dataset.models;
+package xyz.zalaya.dataset.models;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import org.zalaya.datamorph.dataset.exceptions.validation.RowValidationException;
+import xyz.zalaya.dataset.exceptions.validation.RowValidationException;
 
 import java.util.List;
 

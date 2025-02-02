@@ -4,7 +4,7 @@ public interface HeaderType {
 
     Class<?> getType();
 
-    default boolean isValidType(Object value) {
+    default boolean isInstance(Object value) {
         return getType().isInstance(value);
     }
 

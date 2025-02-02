@@ -82,7 +82,7 @@ public class Dataset {
         }
 
         for (int i = 0; i < headersSize; i++) {
-            if (!headers.get(i).getType().isValidType(row.getCells().get(i).getClass())) {
+            if (!headers.get(i).getType().isInstance(row.getCells().get(i).getClass())) {
                 throw new DatasetValidationException("Dataset row cells must be of the same type as the headers");
             }
         }

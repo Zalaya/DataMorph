@@ -3,6 +3,7 @@ package org.zalaya.datamorph.dataset.models;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import org.zalaya.datamorph.dataset.exceptions.TypeMismatchException;
 import org.zalaya.datamorph.dataset.exceptions.validation.DatasetValidationException;
 
 import java.util.*;
@@ -64,28 +65,19 @@ public class Dataset {
             throw new DatasetValidationException("Dataset rows must not be null or empty");
         }
 
-        rows.forEach(this::validateRow);
+        for (int i = 0; i < rows.size(); i++) {
+            if (rows.get(i).getCells().size() != headers.size()) {
+                throw new DatasetValidationException("Dataset row cells size must match the headers size");
+            }
 
-        return rows;
-    }
-
-    /**
-     * Validates the dataset row.
-     *
-     * @param row The dataset row to validate.
-     */
-    private void validateRow(Row row) {
-        int headersSize = headers.size();
-
-        if (row.getCells().size() != headersSize) {
-            throw new DatasetValidationException("Dataset row cells must have the same size as the headers");
-        }
-
-        for (int i = 0; i < headersSize; i++) {
-            if (!headers.get(i).getType().isInstance(row.getCells().get(i).getClass())) {
-                throw new DatasetValidationException("Dataset row cells must be of the same type as the headers");
+            for (int j = 0; j < headers.size(); j++) {
+                if (!headers.get(i).getType().isInstance(rows.get(i).getCells().get(j).getClass())) {
+                    throw new TypeMismatchException("Dataset row cells must be of the same type as the headers");
+                }
             }
         }
+
+        return rows;
     }
 
 }

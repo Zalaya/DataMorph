@@ -11,17 +11,13 @@ repositories {
     mavenCentral()
 }
 
-val lombokVersion = "1.18.36"
-val junitVersion = "5.10.0"
-val mockitoVersion = "5.15.2"
-
 dependencies {
-    compileOnly("org.projectlombok:lombok:$lombokVersion")
-    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    compileOnly("org.projectlombok:lombok:${property("lombok.version")}")
+    annotationProcessor("org.projectlombok:lombok:${property("lombok.version")}")
 
-    testImplementation(platform("org.junit:junit-bom:$junitVersion"))
+    testImplementation(platform("org.junit:junit-bom:${property("junit.version")}"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("org.mockito:mockito-core:$mockitoVersion")
+    testImplementation("org.mockito:mockito-core:${property("mockito.version")}")
 }
 
 tasks.test {
@@ -36,6 +32,14 @@ publishing {
     }
 
     repositories {
-        mavenLocal()
+        maven {
+            url = mavenLocal().url
+        }
+    }
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }

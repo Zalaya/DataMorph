@@ -10,7 +10,6 @@ import xyz.zalaya.dataset.enumerators.HeaderType;
 import xyz.zalaya.dataset.exceptions.validation.HeaderValidationException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import static xyz.zalaya.dataset.utilities.MockUtilities.mockHeaderType;

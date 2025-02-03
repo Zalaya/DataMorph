@@ -32,9 +32,7 @@ publishing {
     }
 
     repositories {
-        maven {
-            url = mavenLocal().url
-        }
+        mavenLocal()
     }
 }
 

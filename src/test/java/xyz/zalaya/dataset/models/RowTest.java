@@ -16,10 +16,15 @@ import static xyz.zalaya.dataset.utilities.MockUtilities.mockHeaderType;
 
 class RowTest {
 
+    private final List<Header> headers = List.of(
+        new Header("header1", mockHeaderType(String.class)),
+        new Header("header2", mockHeaderType(Integer.class)),
+        new Header("header3", mockHeaderType(Boolean.class))
+    );
+
     @Test
     void shouldCreateRowWithValidAttributes() {
-        List<Header> headers = List.of(new Header("header", mockHeaderType(String.class)));
-        List<Object> cells = List.of("cell");
+        List<Object> cells = List.of("cell", 1, true);
         Row row = new Row(headers, cells);
 
         assertEquals(cells, row.getCells());
@@ -28,8 +33,6 @@ class RowTest {
     @ParameterizedTest
     @NullSource
     void shouldThrowExceptionWhenCellsAreNull(List<Object> cells) {
-        List<Header> headers = List.of(new Header("header", mockHeaderType(String.class)));
-
         assertThrows(RowValidationException.class, () -> {
             new Row(headers, cells);
         });
@@ -37,8 +40,7 @@ class RowTest {
 
     @Test
     void shouldThrowExceptionWhenCellCountDoesNotMatchHeaderCount() {
-        List<Header> headers = List.of(new Header("header", mockHeaderType(String.class)));
-        List<Object> cells = List.of("cell1", "cell2");
+        List<Object> cells = List.of("cell", 1);
 
         assertThrows(RowValidationException.class, () -> {
             new Row(headers, cells);
@@ -47,8 +49,7 @@ class RowTest {
 
     @Test
     void shouldThrowExceptionWhenCellTypeDoesNotMatchHeaderType() {
-        List<Header> headers = List.of(new Header("header", mockHeaderType(String.class)));
-        List<Object> cells = List.of(1);
+        List<Object> cells = List.of(1, true, "cell");
 
         assertThrows(HeaderTypeMismatchException.class, () -> {
             new Row(headers, cells);

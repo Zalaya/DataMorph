@@ -18,7 +18,7 @@ class RowTest {
 
     @Test
     void shouldCreateRowWithValidAttributes() {
-        List<Header> headers = List.of(new Header("header1", mockHeaderType(String.class)));
+        List<Header> headers = List.of(new Header("header", mockHeaderType(String.class)));
         List<Object> cells = List.of("cell");
         Row row = new Row(headers, cells);
 
@@ -37,7 +37,7 @@ class RowTest {
 
     @Test
     void shouldThrowExceptionWhenCellCountDoesNotMatchHeaderCount() {
-        List<Header> headers = List.of(new Header("header1", mockHeaderType(String.class)));
+        List<Header> headers = List.of(new Header("header", mockHeaderType(String.class)));
         List<Object> cells = List.of("cell1", "cell2");
 
         assertThrows(RowValidationException.class, () -> {
@@ -47,7 +47,7 @@ class RowTest {
 
     @Test
     void shouldThrowExceptionWhenCellTypeDoesNotMatchHeaderType() {
-        List<Header> headers = List.of(new Header("name", mockHeaderType(String.class)));
+        List<Header> headers = List.of(new Header("header", mockHeaderType(String.class)));
         List<Object> cells = List.of(1);
 
         assertThrows(HeaderTypeMismatchException.class, () -> {

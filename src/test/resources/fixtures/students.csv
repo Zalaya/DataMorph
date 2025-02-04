@@ -1,6 +1,0 @@
-student_id;first_name;last_name;age;grade;enrolled
-1;Alice;Smith;20;A;true
-2;Bob;Johnson;22;B;true
-3;Charlie;Williams;21;C;false
-4;David;Brown;23;B;true
-5;Eva;Jones;20;A;true

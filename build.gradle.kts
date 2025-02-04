@@ -1,43 +1,27 @@
 plugins {
     id("java")
-    id("maven-publish")
 }
 
 group = "xyz.zalaya"
 version = "1.0.0"
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
-dependencies {
-    compileOnly("org.projectlombok:lombok:${property("lombok.version")}")
-    annotationProcessor("org.projectlombok:lombok:${property("lombok.version")}")
+val lombokVersion = property("lombok.version")
+val junitVersion = property("junit.version")
+val mockitoVersion = property("mockito.version")
 
-    testImplementation(platform("org.junit:junit-bom:${property("junit.version")}"))
+dependencies {
+    compileOnly("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+
+    testImplementation(platform("org.junit:junit-bom:$junitVersion"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("org.mockito:mockito-core:${property("mockito.version")}")
+    testImplementation("org.mockito:mockito-core:$mockitoVersion")
 }
 
 tasks.test {
     useJUnitPlatform()
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            from(components["java"])
-        }
-    }
-
-    repositories {
-        mavenLocal()
-    }
-}
-
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
 }

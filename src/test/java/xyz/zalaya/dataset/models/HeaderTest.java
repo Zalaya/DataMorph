@@ -1,7 +1,6 @@
 package xyz.zalaya.dataset.models;
 
 import org.junit.jupiter.api.Test;
-
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.NullSource;
@@ -28,7 +27,7 @@ class HeaderTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    void shouldThrowExceptionWhenNameIsNullOrEmpty(String name) {
+    void shouldThrowExceptionWhenNameIsNullOrBlank(String name) {
         HeaderType type = mockHeaderType(String.class);
 
         assertThrows(HeaderValidationException.class, () -> {

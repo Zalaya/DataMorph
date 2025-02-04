@@ -18,7 +18,7 @@ class HeaderTest {
 
     @Test
     void shouldCreateHeaderWithValidAttributes() {
-        String name = "name";
+        String name = "header";
         HeaderType type = mockHeaderType(String.class);
         Header header = new Header(name, type);
 

@@ -5,19 +5,18 @@ import lombok.Getter;
 
 import xyz.zalaya.dataset.exceptions.validation.DatasetValidationException;
 
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @EqualsAndHashCode(exclude = {"headers", "rows"})
 public class Dataset {
 
     private final String name;
-    private final Set<Header> headers;
+    private final List<Header> headers;
     private final List<Row> rows;
 
-    public Dataset(String name, Set<Header> headers, List<Row> rows) {
+    public Dataset(String name, List<Header> headers, List<Row> rows) {
         this.name = validateName(name);
         this.headers = validateHeaders(headers);
         this.rows = validateRows(rows);
@@ -28,6 +27,7 @@ public class Dataset {
      *
      * @param name The dataset name to validate.
      * @return The validated dataset name.
+     * @throws DatasetValidationException If the dataset name is null or empty.
      */
     private String validateName(String name) {
         if (name == null || name.trim().isBlank()) {
@@ -42,13 +42,18 @@ public class Dataset {
      *
      * @param headers The dataset headers to validate.
      * @return The validated dataset headers.
+     * @throws DatasetValidationException If the dataset headers are null or contain duplicates.
      */
-    private Set<Header> validateHeaders(Set<Header> headers) {
+    private List<Header> validateHeaders(List<Header> headers) {
         if (headers == null || headers.isEmpty()) {
             throw new DatasetValidationException("Dataset headers must not be null or empty");
         }
 
-        return new LinkedHashSet<>(headers);
+        if (new HashSet<>(headers).size() != headers.size()) {
+            throw new DatasetValidationException("Dataset headers must not contain duplicates");
+        }
+
+        return headers;
     }
 
     /**
@@ -56,6 +61,7 @@ public class Dataset {
      *
      * @param rows The dataset rows to validate.
      * @return The validated dataset rows.
+     * @throws DatasetValidationException If the dataset rows are null or empty.
      */
     private List<Row> validateRows(List<Row> rows) {
         if (rows == null || rows.isEmpty()) {

@@ -23,6 +23,7 @@ public class Header {
      *
      * @param name The header name to validate.
      * @return The validated header name.
+     * @throws HeaderValidationException If the header name is null or empty.
      */
     private String validateName(String name) {
         if (name == null || name.trim().isBlank()) {

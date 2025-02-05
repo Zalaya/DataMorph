@@ -47,7 +47,7 @@ class DatasetTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    void shouldThrowExceptionWhenHeadersAreNull(List<Header> headers) {
+    void shouldThrowExceptionWhenHeadersAreNullOrEmpty(List<Header> headers) {
         assertThrows(DatasetValidationException.class, () -> {
             new Dataset("dataset", headers, rows);
         });
@@ -68,7 +68,7 @@ class DatasetTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    void shouldThrowExceptionWhenRowsAreNull(List<Row> rows) {
+    void shouldThrowExceptionWhenRowsAreNullOrEmpty(List<Row> rows) {
         assertThrows(DatasetValidationException.class, () -> {
             new Dataset("dataset", headers, rows);
         });

@@ -10,8 +10,7 @@ import xyz.zalaya.dataset.mocks.MockHeaderType;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class DatasetTest {
 
@@ -78,6 +77,22 @@ class DatasetTest {
         assertThrows(DatasetValidationException.class, () -> {
             new Dataset("dataset", headers, rows);
         });
+    }
+
+    @Test
+    void shouldReturnTrueWhenComparingTwoDatasetsWithSameName() {
+        Dataset dataset1 = new Dataset("dataset", headers, rows);
+        Dataset dataset2 = new Dataset("dataset", headers, rows);
+
+        assertEquals(dataset1, dataset2);
+    }
+
+    @Test
+    void shouldReturnFalseWhenComparingTwoDatasetsWithDifferentName() {
+        Dataset dataset1 = new Dataset("dataset1", headers, rows);
+        Dataset dataset2 = new Dataset("dataset2", headers, rows);
+
+        assertNotEquals(dataset1, dataset2);
     }
 
 }

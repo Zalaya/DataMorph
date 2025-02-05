@@ -9,8 +9,7 @@ import xyz.zalaya.dataset.enumerators.HeaderType;
 import xyz.zalaya.dataset.exceptions.validation.HeaderValidationException;
 import xyz.zalaya.dataset.mocks.MockHeaderType;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class HeaderTest {
 
@@ -42,6 +41,22 @@ class HeaderTest {
         assertThrows(HeaderValidationException.class, () -> {
             new Header(name, type);
         });
+    }
+
+    @Test
+    void shouldReturnTrueWhenComparingHeadersWithSameName() {
+        Header header1 = new Header("header", MockHeaderType.STRING);
+        Header header2 = new Header("header", MockHeaderType.STRING);
+
+        assertEquals(header1, header2);
+    }
+
+    @Test
+    void shouldReturnFalseWhenComparingHeadersWithDifferentName() {
+        Header header1 = new Header("header1", MockHeaderType.STRING);
+        Header header2 = new Header("header2", MockHeaderType.STRING);
+
+        assertNotEquals(header1, header2);
     }
 
 }

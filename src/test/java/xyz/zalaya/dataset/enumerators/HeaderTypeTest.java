@@ -14,6 +14,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class HeaderTypeTest {
 
     @Test
+    void shouldReturnTypeWhenGetTypeIsCalled() {
+        HeaderType type = MockHeaderType.STRING;
+
+        assertEquals(String.class, type.getType());
+    }
+
+    @Test
     void shouldReturnCorrectHeaderTypeWhenFromTypeIsCalled() {
         MockHeaderType[] values = MockHeaderType.values();
         HeaderType type = HeaderType.fromType(String.class,values);

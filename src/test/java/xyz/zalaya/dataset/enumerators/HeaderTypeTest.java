@@ -15,7 +15,8 @@ class HeaderTypeTest {
 
     @Test
     void shouldReturnCorrectHeaderTypeWhenFromTypeIsCalled() {
-        HeaderType type = HeaderType.fromType(String.class, MockHeaderType.values());
+        MockHeaderType[] values = MockHeaderType.values();
+        HeaderType type = HeaderType.fromType(String.class,values);
 
         assertEquals(MockHeaderType.STRING, type);
     }

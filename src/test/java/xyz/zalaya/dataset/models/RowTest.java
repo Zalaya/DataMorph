@@ -1,5 +1,6 @@
 package xyz.zalaya.dataset.models;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
@@ -16,11 +17,16 @@ import static xyz.zalaya.dataset.utilities.MockUtilities.mockHeaderType;
 
 class RowTest {
 
-    private final List<Header> headers = List.of(
-        new Header("header1", mockHeaderType(String.class)),
-        new Header("header2", mockHeaderType(Integer.class)),
-        new Header("header3", mockHeaderType(Boolean.class))
-    );
+    private List<Header> headers;
+
+    @BeforeEach
+    void setUp() {
+        headers = List.of(
+            new Header("header1", mockHeaderType(String.class)),
+            new Header("header2", mockHeaderType(Integer.class)),
+            new Header("header3", mockHeaderType(Boolean.class))
+        );
+    }
 
     @Test
     void shouldCreateRowWithValidAttributes() {

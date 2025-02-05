@@ -7,18 +7,17 @@ import org.junit.jupiter.params.provider.NullSource;
 
 import xyz.zalaya.dataset.enumerators.HeaderType;
 import xyz.zalaya.dataset.exceptions.validation.HeaderValidationException;
+import xyz.zalaya.dataset.mocks.MockHeaderType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import static xyz.zalaya.dataset.utilities.MockUtilities.mockHeaderType;
 
 class HeaderTest {
 
     @Test
     void shouldCreateHeaderWithValidAttributes() {
         String name = "header";
-        HeaderType type = mockHeaderType(String.class);
+        HeaderType type = MockHeaderType.STRING;
         Header header = new Header(name, type);
 
         assertEquals(name, header.getName());
@@ -28,7 +27,7 @@ class HeaderTest {
     @ParameterizedTest
     @NullAndEmptySource
     void shouldThrowExceptionWhenNameIsNullOrBlank(String name) {
-        HeaderType type = mockHeaderType(String.class);
+        HeaderType type = MockHeaderType.STRING;
 
         assertThrows(HeaderValidationException.class, () -> {
             new Header(name, type);

@@ -6,13 +6,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import xyz.zalaya.dataset.exceptions.validation.DatasetValidationException;
+import xyz.zalaya.dataset.mocks.MockHeaderType;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import static xyz.zalaya.dataset.utilities.MockUtilities.mockHeaderType;
 
 class DatasetTest {
 
@@ -22,9 +21,9 @@ class DatasetTest {
     @BeforeEach
     void setUp() {
         headers = List.of(
-            new Header("header1", mockHeaderType(String.class)),
-            new Header("header2", mockHeaderType(Integer.class)),
-            new Header("header3", mockHeaderType(Boolean.class))
+            new Header("header1", MockHeaderType.STRING),
+            new Header("header2", MockHeaderType.INTEGER),
+            new Header("header3", MockHeaderType.BOOLEAN)
         );
 
         rows = List.of(
@@ -63,9 +62,9 @@ class DatasetTest {
     @Test
     void shouldThrowExceptionWhenHeadersContainDuplicates() {
         headers = List.of(
-            new Header("header1", mockHeaderType(String.class)),
-            new Header("header1", mockHeaderType(Integer.class)),
-            new Header("header3", mockHeaderType(Boolean.class))
+            new Header("header1", MockHeaderType.STRING),
+            new Header("header1", MockHeaderType.INTEGER),
+            new Header("header3", MockHeaderType.BOOLEAN)
         );
 
         assertThrows(DatasetValidationException.class, () -> {

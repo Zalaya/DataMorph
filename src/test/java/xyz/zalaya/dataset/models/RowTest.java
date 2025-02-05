@@ -7,13 +7,11 @@ import org.junit.jupiter.params.provider.NullSource;
 
 import xyz.zalaya.dataset.exceptions.HeaderTypeMismatchException;
 import xyz.zalaya.dataset.exceptions.validation.RowValidationException;
+import xyz.zalaya.dataset.mocks.MockHeaderType;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import static xyz.zalaya.dataset.utilities.MockUtilities.mockHeaderType;
+import static org.junit.jupiter.api.Assertions.*;
 
 class RowTest {
 
@@ -22,9 +20,9 @@ class RowTest {
     @BeforeEach
     void setUp() {
         headers = List.of(
-            new Header("header1", mockHeaderType(String.class)),
-            new Header("header2", mockHeaderType(Integer.class)),
-            new Header("header3", mockHeaderType(Boolean.class))
+            new Header("header1", MockHeaderType.STRING),
+            new Header("header2", MockHeaderType.INTEGER),
+            new Header("header3", MockHeaderType.BOOLEAN)
         );
     }
 
@@ -33,7 +31,10 @@ class RowTest {
         List<Object> cells = List.of("cell", 1, true);
         Row row = new Row(headers, cells);
 
-        assertEquals(cells, row.getCells());
+        assertAll(
+            () -> assertEquals(cells, row.getCells()),
+            () -> assertEquals(cells.size(), row.getCells().size())
+        );
     }
 
     @ParameterizedTest
@@ -60,6 +61,25 @@ class RowTest {
         assertThrows(HeaderTypeMismatchException.class, () -> {
             new Row(headers, cells);
         });
+    }
+
+    @Test
+    void shouldReturnTrueWhenComparingTwoRowsWithSameCells() {
+        List<Object> cells = List.of("cell", 1, true);
+        Row row1 = new Row(headers, cells);
+        Row row2 = new Row(headers, cells);
+
+        assertEquals(row1, row2);
+    }
+
+    @Test
+    void shouldReturnFalseWhenComparingTwoRowsWithDifferentCells() {
+        List<Object> cells1 = List.of("cell", 1, true);
+        List<Object> cells2 = List.of("cell", 1, false);
+        Row row1 = new Row(headers, cells1);
+        Row row2 = new Row(headers, cells2);
+
+        assertNotEquals(row1, row2);
     }
 
 }

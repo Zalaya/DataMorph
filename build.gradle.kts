@@ -1,5 +1,6 @@
 plugins {
-    id("java")
+    java
+    jacoco
 }
 
 group = "xyz.zalaya"
@@ -24,4 +25,13 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        html.required = true
+        xml.required = true
+    }
 }

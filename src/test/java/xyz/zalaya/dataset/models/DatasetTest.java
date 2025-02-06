@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import xyz.zalaya.dataset.exceptions.validation.DatasetValidationException;
+import xyz.zalaya.dataset.exceptions.DatasetValidationException;
 import xyz.zalaya.dataset.mocks.MockHeaderType;
 
 import java.util.List;

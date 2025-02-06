@@ -1,7 +1,7 @@
 package xyz.zalaya.dataset.enumerators;
 
 import xyz.zalaya.dataset.exceptions.UnknownHeaderTypeException;
-import xyz.zalaya.dataset.exceptions.validation.HeaderTypeValidationException;
+import xyz.zalaya.dataset.exceptions.HeaderTypeValidationException;
 
 public interface HeaderType {
 

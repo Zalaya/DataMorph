@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import xyz.zalaya.dataset.enumerators.HeaderType;
-import xyz.zalaya.dataset.exceptions.validation.HeaderValidationException;
+import xyz.zalaya.dataset.exceptions.HeaderValidationException;
 
 @Getter
 @EqualsAndHashCode(exclude = {"type"})

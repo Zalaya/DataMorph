@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import xyz.zalaya.dataset.exceptions.HeaderTypeMismatchException;
-import xyz.zalaya.dataset.exceptions.validation.RowValidationException;
+import xyz.zalaya.dataset.exceptions.RowValidationException;
 
 import java.util.List;
 

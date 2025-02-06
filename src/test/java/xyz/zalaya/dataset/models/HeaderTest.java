@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 
 import xyz.zalaya.dataset.enumerators.HeaderType;
-import xyz.zalaya.dataset.exceptions.validation.HeaderValidationException;
+import xyz.zalaya.dataset.exceptions.HeaderValidationException;
 import xyz.zalaya.dataset.mocks.MockHeaderType;
 
 import static org.junit.jupiter.api.Assertions.*;

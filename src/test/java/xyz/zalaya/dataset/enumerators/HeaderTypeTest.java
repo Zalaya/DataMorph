@@ -5,7 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 
 import xyz.zalaya.dataset.exceptions.UnknownHeaderTypeException;
-import xyz.zalaya.dataset.exceptions.validation.HeaderTypeValidationException;
+import xyz.zalaya.dataset.exceptions.HeaderTypeValidationException;
 import xyz.zalaya.dataset.mocks.MockHeaderType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

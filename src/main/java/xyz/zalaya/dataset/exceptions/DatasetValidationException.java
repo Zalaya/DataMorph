@@ -1,4 +1,4 @@
-package xyz.zalaya.dataset.exceptions.validation;
+package xyz.zalaya.dataset.exceptions;
 
 public class DatasetValidationException extends RuntimeException {
 

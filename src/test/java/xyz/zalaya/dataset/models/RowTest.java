@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 
 import xyz.zalaya.dataset.exceptions.HeaderTypeMismatchException;
-import xyz.zalaya.dataset.exceptions.validation.RowValidationException;
+import xyz.zalaya.dataset.exceptions.RowValidationException;
 import xyz.zalaya.dataset.mocks.MockHeaderType;
 
 import java.util.List;

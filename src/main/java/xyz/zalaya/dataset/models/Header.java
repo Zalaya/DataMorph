@@ -38,6 +38,7 @@ public class Header {
      *
      * @param type The header type to validate.
      * @return The validated header type.
+     * @throws HeaderValidationException If the header type is null.
      */
     private HeaderType validateType(HeaderType type) {
         if (type == null) {

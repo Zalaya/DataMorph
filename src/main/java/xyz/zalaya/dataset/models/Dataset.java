@@ -20,13 +20,6 @@ public class Dataset {
         this.rows = validateRows(rows);
     }
 
-    /**
-     * Validates the dataset name.
-     *
-     * @param name The dataset name to validate.
-     * @return The validated dataset name.
-     * @throws IllegalArgumentException If the dataset name is null or empty.
-     */
     private String validateName(String name) {
         if (name == null || name.trim().isBlank()) {
             throw new IllegalArgumentException("Dataset name must not be null or empty");
@@ -35,13 +28,6 @@ public class Dataset {
         return name;
     }
 
-    /**
-     * Validates the dataset headers.
-     *
-     * @param headers The dataset headers to validate.
-     * @return The validated dataset headers.
-     * @throws IllegalArgumentException If the dataset headers are null or contain duplicates.
-     */
     private List<Header> validateHeaders(List<Header> headers) {
         if (headers == null || headers.isEmpty()) {
             throw new IllegalArgumentException("Dataset headers must not be null or empty");
@@ -54,13 +40,6 @@ public class Dataset {
         return headers;
     }
 
-    /**
-     * Validates the dataset rows.
-     *
-     * @param rows The dataset rows to validate.
-     * @return The validated dataset rows.
-     * @throws IllegalArgumentException If the dataset rows are null or empty.
-     */
     private List<Row> validateRows(List<Row> rows) {
         if (rows == null || rows.isEmpty()) {
             throw new IllegalArgumentException("Dataset rows must not be null or empty");

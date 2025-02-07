@@ -14,15 +14,7 @@ public class Row {
     public Row(List<Header> headers, List<Object> cells) {
         this.cells = validateCells(headers, cells);
     }
-
-    /**
-     * Validates the row cells.
-     *
-     * @param cells The row cells to validate.
-     * @return The validated row cells.
-     * @throws IllegalArgumentException If the row cells are null or do not match the number of headers.
-     * @throws IllegalArgumentException If the row cell type does not match the header type.
-     */
+    
     private List<Object> validateCells(List<Header> headers, List<Object> cells) {
         if (cells == null || headers.size() != cells.size()) {
             throw new IllegalArgumentException("Row cells must not be null and must match the number of headers");

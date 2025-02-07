@@ -16,8 +16,12 @@ public class Row {
     }
     
     private List<Object> validateCells(List<Header> headers, List<Object> cells) {
-        if (cells == null || headers.size() != cells.size()) {
-            throw new IllegalArgumentException("Row cells must not be null and must match the number of headers");
+        if (cells == null || cells.isEmpty()) {
+            throw new IllegalArgumentException("Row cells must not be null or empty");
+        }
+
+        if (headers.size() != cells.size()) {
+            throw new IllegalArgumentException("Row cells must match the number of headers");
         }
 
         for (int i = 0; i < headers.size(); i++) {

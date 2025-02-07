@@ -5,8 +5,8 @@ public interface HeaderType {
     Class<?> getType();
 
     static <T extends HeaderType> T fromType(Class<?> type, T[] values) {
-        if (type == null || values == null) {
-            throw new IllegalArgumentException("Type and values cannot be null");
+        if (type == null || values == null || values.length == 0) {
+            throw new IllegalArgumentException("Type and values must not be null or empty");
         }
 
         for (T value : values) {

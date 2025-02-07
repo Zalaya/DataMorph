@@ -1,8 +1,6 @@
 package xyz.zalaya.dataset.enumerators;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullSource;
 
 import xyz.zalaya.dataset.mocks.MockHeaderType;
 
@@ -45,9 +43,10 @@ class HeaderTypeTest {
         });
     }
 
-    @ParameterizedTest
-    @NullSource
-    void shouldThrowExceptionWhenFromTypeIsCalledWithNullValues(MockHeaderType[] values) {
+    @Test
+    void shouldThrowExceptionWhenFromTypeIsCalledWithNullValues() {
+        MockHeaderType[] values = null;
+
         assertThrows(IllegalArgumentException.class, () -> {
             HeaderType.fromType(String.class, values);
         });

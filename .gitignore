@@ -4,8 +4,6 @@
 .vscode/
 *.iml
 
-# Gradle
+# Maven
 
-.gradle/
-build/
-out/
+target/

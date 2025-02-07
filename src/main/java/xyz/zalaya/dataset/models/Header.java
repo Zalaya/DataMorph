@@ -4,7 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import xyz.zalaya.dataset.enumerators.HeaderType;
-import xyz.zalaya.dataset.exceptions.HeaderValidationException;
 
 @Getter
 @EqualsAndHashCode(exclude = {"type"})
@@ -23,11 +22,11 @@ public class Header {
      *
      * @param name The header name to validate.
      * @return The validated header name.
-     * @throws HeaderValidationException If the header name is null or empty.
+     * @throws IllegalArgumentException If the header name is null or empty.
      */
     private String validateName(String name) {
         if (name == null || name.trim().isBlank()) {
-            throw new HeaderValidationException("Header name must not be null or empty");
+            throw new IllegalArgumentException("Header name must not be null or empty");
         }
 
         return name;
@@ -38,11 +37,11 @@ public class Header {
      *
      * @param type The header type to validate.
      * @return The validated header type.
-     * @throws HeaderValidationException If the header type is null.
+     * @throws IllegalArgumentException If the header type is null.
      */
     private HeaderType validateType(HeaderType type) {
         if (type == null) {
-            throw new HeaderValidationException("Header type must not be null");
+            throw new IllegalArgumentException("Header type must not be null");
         }
 
         return type;

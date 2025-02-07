@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 
-import xyz.zalaya.dataset.exceptions.HeaderTypeMismatchException;
-import xyz.zalaya.dataset.exceptions.RowValidationException;
 import xyz.zalaya.dataset.mocks.MockHeaderType;
 
 import java.util.List;
@@ -40,7 +38,7 @@ class RowTest {
     @ParameterizedTest
     @NullSource
     void shouldThrowExceptionWhenCellsAreNull(List<Object> cells) {
-        assertThrows(RowValidationException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Row(headers, cells);
         });
     }
@@ -49,7 +47,7 @@ class RowTest {
     void shouldThrowExceptionWhenCellCountDoesNotMatchHeaderCount() {
         List<Object> cells = List.of("cell", 1);
 
-        assertThrows(RowValidationException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Row(headers, cells);
         });
     }
@@ -58,7 +56,7 @@ class RowTest {
     void shouldThrowExceptionWhenCellTypeDoesNotMatchHeaderType() {
         List<Object> cells = List.of(1, true, "cell");
 
-        assertThrows(HeaderTypeMismatchException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Row(headers, cells);
         });
     }

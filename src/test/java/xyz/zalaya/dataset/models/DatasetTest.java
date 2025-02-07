@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import xyz.zalaya.dataset.exceptions.DatasetValidationException;
 import xyz.zalaya.dataset.mocks.MockHeaderType;
 
 import java.util.List;
@@ -45,7 +44,7 @@ class DatasetTest {
     @ParameterizedTest
     @NullAndEmptySource
     void shouldThrowExceptionWhenNameIsNullOrBlank(String name) {
-        assertThrows(DatasetValidationException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Dataset(name, headers, rows);
         });
     }
@@ -53,7 +52,7 @@ class DatasetTest {
     @ParameterizedTest
     @NullAndEmptySource
     void shouldThrowExceptionWhenHeadersAreNullOrEmpty(List<Header> headers) {
-        assertThrows(DatasetValidationException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Dataset("dataset", headers, rows);
         });
     }
@@ -66,7 +65,7 @@ class DatasetTest {
             new Header("header3", MockHeaderType.BOOLEAN)
         );
 
-        assertThrows(DatasetValidationException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Dataset("dataset", headers, rows);
         });
     }
@@ -74,7 +73,7 @@ class DatasetTest {
     @ParameterizedTest
     @NullAndEmptySource
     void shouldThrowExceptionWhenRowsAreNullOrEmpty(List<Row> rows) {
-        assertThrows(DatasetValidationException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Dataset("dataset", headers, rows);
         });
     }

@@ -1,15 +1,12 @@
 package xyz.zalaya.dataset.enumerators;
 
-import xyz.zalaya.dataset.exceptions.UnknownHeaderTypeException;
-import xyz.zalaya.dataset.exceptions.HeaderTypeValidationException;
-
 public interface HeaderType {
 
     Class<?> getType();
 
     static <T extends HeaderType> T fromType(Class<?> type, T[] values) {
         if (type == null || values == null) {
-            throw new HeaderTypeValidationException("Type and values cannot be null");
+            throw new IllegalArgumentException("Type and values cannot be null");
         }
 
         for (T value : values) {
@@ -18,7 +15,7 @@ public interface HeaderType {
             }
         }
 
-        throw new UnknownHeaderTypeException("No header type found for type: " + type);
+        throw new IllegalArgumentException("No header type found for type: " + type);
     }
 
 }

@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 
 import xyz.zalaya.dataset.enumerators.HeaderType;
-import xyz.zalaya.dataset.exceptions.HeaderValidationException;
 import xyz.zalaya.dataset.mocks.MockHeaderType;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,7 +27,7 @@ class HeaderTest {
     void shouldThrowExceptionWhenNameIsNullOrBlank(String name) {
         HeaderType type = MockHeaderType.STRING;
 
-        assertThrows(HeaderValidationException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Header(name, type);
         });
     }
@@ -38,7 +37,7 @@ class HeaderTest {
     void shouldThrowExceptionWhenTypeIsNull(HeaderType type) {
         String name = "name";
 
-        assertThrows(HeaderValidationException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Header(name, type);
         });
     }

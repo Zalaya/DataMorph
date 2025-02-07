@@ -3,9 +3,6 @@ package xyz.zalaya.dataset.models;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import xyz.zalaya.dataset.exceptions.HeaderTypeMismatchException;
-import xyz.zalaya.dataset.exceptions.RowValidationException;
-
 import java.util.List;
 
 @Getter
@@ -23,17 +20,17 @@ public class Row {
      *
      * @param cells The row cells to validate.
      * @return The validated row cells.
-     * @throws RowValidationException If the row cells are null or do not match the number of headers.
-     * @throws HeaderTypeMismatchException If the row cell type does not match the header type.
+     * @throws IllegalArgumentException If the row cells are null or do not match the number of headers.
+     * @throws IllegalArgumentException If the row cell type does not match the header type.
      */
     private List<Object> validateCells(List<Header> headers, List<Object> cells) {
         if (cells == null || headers.size() != cells.size()) {
-            throw new RowValidationException("Row cells must not be null and must match the number of headers");
+            throw new IllegalArgumentException("Row cells must not be null and must match the number of headers");
         }
 
         for (int i = 0; i < headers.size(); i++) {
             if (!headers.get(i).getType().getType().isAssignableFrom(cells.get(i).getClass())) {
-                throw new HeaderTypeMismatchException("Row cell type must match the header type");
+                throw new IllegalArgumentException("Row cell type must match the header type");
             }
         }
 

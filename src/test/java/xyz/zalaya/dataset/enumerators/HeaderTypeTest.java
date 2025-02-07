@@ -35,9 +35,9 @@ class HeaderTypeTest {
         });
     }
 
-    @ParameterizedTest
-    @NullSource
-    void shouldThrowExceptionWhenFromTypeIsCalledWithNullType(Class<?> type) {
+    @Test
+    void shouldThrowExceptionWhenFromTypeIsCalledWithNullType() {
+        Class<?> type = null;
         MockHeaderType[] values = MockHeaderType.values();
 
         assertThrows(IllegalArgumentException.class, () -> {

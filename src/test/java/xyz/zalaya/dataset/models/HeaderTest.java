@@ -3,7 +3,6 @@ package xyz.zalaya.dataset.models;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.NullSource;
 
 import xyz.zalaya.dataset.enumerators.HeaderType;
 import xyz.zalaya.dataset.mocks.MockHeaderType;
@@ -32,10 +31,10 @@ class HeaderTest {
         });
     }
 
-    @ParameterizedTest
-    @NullSource
-    void shouldThrowExceptionWhenTypeIsNull(HeaderType type) {
+    @Test
+    void shouldThrowExceptionWhenTypeIsNull() {
         String name = "name";
+        HeaderType type = null;
 
         assertThrows(IllegalArgumentException.class, () -> {
             new Header(name, type);

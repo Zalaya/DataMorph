@@ -2,8 +2,6 @@ package xyz.zalaya.dataset.models;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullSource;
 
 import xyz.zalaya.dataset.mocks.MockHeaderType;
 
@@ -35,9 +33,10 @@ class RowTest {
         );
     }
 
-    @ParameterizedTest
-    @NullSource
-    void shouldThrowExceptionWhenCellsAreNull(List<Object> cells) {
+    @Test
+    void shouldThrowExceptionWhenCellsAreNull() {
+        List<Object> cells = null;
+
         assertThrows(IllegalArgumentException.class, () -> {
             new Row(headers, cells);
         });
